@@ -1,0 +1,283 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f5f5;
+}
+
+
+.phone-frame {
+    width: 375px;
+    height: 812px;
+    background-color: #000;
+    border-radius: 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.screen {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    background-color: #fff;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+
+.status-bar {
+    height: 44px;
+    background-color: #102147;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    color: white;
+}
+
+.time {
+    font-weight: bold;
+}
+
+.status-icons {
+    display: flex;
+    gap: 8px;
+}
+
+
+.app-content {
+    height: calc(100% - 44px - 60px); /* Subtract status bar and nav bar height */
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fcfcfc;
+}
+
+/* Welcome Survey */
+.welcome-survey {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.survey-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.survey-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #102147;
+    margin-bottom: 10px;
+}
+
+.survey-subtitle {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.survey-step {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.step-indicator {
+    display: flex;
+    gap: 8px;
+}
+
+.step-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+}
+
+.step-dot.active {
+    background-color: #4b7bec;
+}
+
+.step-number {
+    color: #888;
+    font-size: 14px;
+}
+
+.survey-question {
+    margin: 20px 0;
+}
+
+.question-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.answer-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option {
+    padding: 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.option:hover {
+    border-color: #4b7bec;
+    background-color: #f5f9ff;
+}
+
+.option.selected {
+    border-color: #4b7bec;
+    background-color: #f5f9ff;
+}
+
+.option-radio {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #c0c0c0;
+    border-radius: 50%;
+    margin-right: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.option.selected .option-radio {
+    border-color: #4b7bec;
+}
+
+.option.selected .option-radio::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #4b7bec;
+}
+
+.option-text {
+    font-size: 16px;
+    color: #333;
+}
+
+.survey-buttons {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid #d0d0d0;
+    color: #666;
+}
+
+.btn-outline:hover {
+    background-color: #f5f5f5;
+}
+
+.btn-primary {
+    background-color: #102147;
+    border: none;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0a1631;
+}
+
+
+.empty-screen {
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: #888;
+    font-size: 18px;
+    text-align: center;
+    padding: 20px;
+}
+
+
+.nav-bar {
+    height: 60px;
+    background-color: white;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.nav-icon {
+    font-size: 24px;
+    color: #888;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-icon svg {
+    width: 24px;
+    height: 24px;
+    color: #888;
+    transition: color 0.2s ease;
+}
+
+.nav-label {
+    font-size: 12px;
+    color: #888;
+    transition: color 0.2s ease;
+}
+
+.nav-item.active .nav-icon svg,
+.nav-item.active .nav-label {
+    color: #102147;
+}
+
+.nav-item:hover .nav-icon svg,
+.nav-item:hover .nav-label {
+    color: #4b7bec;
+}
