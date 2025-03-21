@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget App Prototype</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="phone-frame">
+        <div class="screen">
+            <!-- Status Bar -->
+            <div class="status-bar">
+                <div class="time">9:41</div>
+                <div class="status-icons">
+                    <span>📶</span>
+                    <span>📡</span>
+                    <span>🔋</span>
+                </div>
+            </div>
+
+            <!-- App Content -->
+            <div class="app-content">
+                <!-- Welcome Survey (default visible) -->
+                <div id="welcome-survey" class="welcome-survey">
+                    <div class="survey-header">
+                        <div class="survey-title">Welcome to BudgetPal</div>
+                        <div class="survey-subtitle">Let's set up your financial profile to personalize your experience</div>
+                    </div>
+
+                    <div class="survey-step">
+                        <div class="step-indicator">
+                            <div class="step-dot active"></div>
+                            <div class="step-dot"></div>
+                            <div class="step-dot"></div>
+                        </div>
+                        <div class="step-number">1 of 3</div>
+                    </div>
+
+                    <div class="survey-question">
+                        <div class="question-text">What's your primary financial goal?</div>
+                        <div class="answer-options">
+                            <div class="option" onclick="selectOption(this)">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Save for a big purchase</div>
+                            </div>
+                            <div class="option" onclick="selectOption(this)">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Build an emergency fund</div>
+                            </div>
+                            <div class="option" onclick="selectOption(this)">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Track daily expenses</div>
+                            </div>
+                            <div class="option" onclick="selectOption(this)">
+                                <div class="option-radio"></div>
+                                <div class="option-text">Pay off debt</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="survey-buttons">
+                        <button class="btn btn-outline">Skip</button>
+                        <button class="btn btn-primary" onclick="showEmptyScreen('home')">Next</button>
+                    </div>
+                </div>
+
+                <!-- Empty Screens (initially hidden) -->
+                <div id="home-screen" class="empty-screen">
+                    Home/Dashboard Screen<br>(Empty Placeholder)
+                </div>
+                
+                <div id="reports-screen" class="empty-screen">
+                    Reports Screen<br>(Empty Placeholder)
+                </div>
+                
+                <div id="goals-screen" class="empty-screen">
+                    Goals Screen<br>(Empty Placeholder)
+                </div>
+                
+                <div id="settings-screen" class="empty-screen">
+                    Settings Screen<br>(Empty Placeholder)
+                </div>
+            </div>
+
+            <!-- Navigation Bar -->
+            <div class="nav-bar">
+                <div class="nav-item" onclick="navigate('home')">
+                    <div class="nav-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
+                    <div class="nav-label">Home</div>
+                </div>
+                <div class="nav-item" onclick="navigate('reports')">
+                    <div class="nav-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10"></line>
+                            <line x1="12" y1="20" x2="12" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="14"></line>
+                        </svg>
+                    </div>
+                    <div class="nav-label">Reports</div>
+                </div>
+                <div class="nav-item" onclick="navigate('goals')">
+                    <div class="nav-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <circle cx="12" cy="12" r="6"></circle>
+                            <circle cx="12" cy="12" r="2"></circle>
+                        </svg>
+                    </div>
+                    <div class="nav-label">Goals</div>
+                </div>
+                <div class="nav-item" onclick="navigate('settings')">
+                    <div class="nav-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        </svg>
+                    </div>
+                    <div class="nav-label">Settings</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
