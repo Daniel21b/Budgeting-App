@@ -6,55 +6,58 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f5f5f5;
+    background-color: #fff;
 }
 
 
 .phone-frame {
-    width: 450px;
-    height: 812px;
-    background-color: #000;
-    border-radius: 40px;
+    width: 640px;  /* should not change */
+    height: 960px; /* should not change */
+    background-color: #fff;
+    border-radius: 150px 150px 40px 40px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  
 }
 
 .screen {
     position: absolute;
-    top: 12px;
+    top: 150px;
     left: 12px;
     right: 12px;
     bottom: 12px;
     background-color: #fff;
     border-radius: 30px;
     overflow: hidden;
+    border: 6px solid #0f0e0edc;
 }
 
 
 .status-bar {
-    height: 44px;
+    height: 50px;
     background-color: #102147;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 15px;
+    padding: 0 20px;
     color: white;
 }
 
 .time {
     font-weight: bold;
+    font-size: 18px;
 }
 
 .status-icons {
     display: flex;
-    gap: 8px;
+    gap: 12px;
+    font-size: 18px;
 }
 
 
 .app-content {
-    height: calc(100% - 44px - 60px); /* Subtract status bar and nav bar height */
-    padding: 16px;
+    height: calc(100% - 50px - 70px); /* Subtract status bar and nav bar height */
+    padding: 20px;
     display: flex;
     flex-direction: column;
     background-color: #fcfcfc;
@@ -77,14 +80,14 @@ body {
 }
 
 .survey-title {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 600;
     color: #102147;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .survey-subtitle {
-    font-size: 16px;
+    font-size: 18px;
     color: #666;
     line-height: 1.4;
 }
@@ -97,12 +100,12 @@ body {
 
 .step-indicator {
     display: flex;
-    gap: 8px;
+    gap: 12px;
 }
 
 .step-dot {
-    width: 10px;
-    height: 10px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background-color: #e0e0e0;
 }
@@ -113,7 +116,7 @@ body {
 
 .step-number {
     color: #888;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .survey-question {
@@ -121,10 +124,10 @@ body {
 }
 
 .question-text {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 500;
     color: #333;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 }
 
 .answer-options {
@@ -154,11 +157,11 @@ body {
 }
 
 .option-radio {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     border: 2px solid #c0c0c0;
     border-radius: 50%;
-    margin-right: 12px;
+    margin-right: 14px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -170,14 +173,14 @@ body {
 
 .option.selected .option-radio::after {
     content: "";
-    width: 10px;
-    height: 10px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background-color: #4b7bec;
 }
 
 .option-text {
-    font-size: 16px;
+    font-size: 18px;
     color: #333;
 }
 
@@ -188,9 +191,9 @@ body {
 }
 
 .btn {
-    padding: 12px 24px;
-    border-radius: 8px;
-    font-size: 16px;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 18px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -230,7 +233,7 @@ body {
 
 
 .nav-bar {
-    height: 60px;
+    height: 70px;
     background-color: white;
     border-top: 1px solid #e0e0e0;
     display: flex;
@@ -251,7 +254,7 @@ body {
 }
 
 .nav-icon {
-    font-size: 24px;
+    font-size: 28px;
     color: #888;
     display: flex;
     justify-content: center;
@@ -259,14 +262,14 @@ body {
 }
 
 .nav-icon svg {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     color: #888;
     transition: color 0.2s ease;
 }
 
 .nav-label {
-    font-size: 12px;
+    font-size: 14px;
     color: #888;
     transition: color 0.2s ease;
 }
@@ -301,8 +304,8 @@ body {
 
 .budget-summary h2 {
     color: #102147;
-    font-size: 20px;
-    margin: 0 0 16px 0;
+    font-size: 24px;
+    margin: 0 0 20px 0;
 }
 
 .balance-card {
@@ -313,7 +316,7 @@ body {
 }
 
 .balance-amount {
-    font-size: 32px;
+    font-size: 38px;
     font-weight: 600;
     color: #102147;
 }
@@ -352,8 +355,8 @@ body {
 
 .recent-activity h3 {
     color: #102147;
-    font-size: 18px;
-    margin: 0 0 16px 0;
+    font-size: 22px;
+    margin: 0 0 20px 0;
 }
 
 .activity-list {
@@ -390,6 +393,7 @@ body {
 .activity-name {
     font-weight: 500;
     color: #333;
+    font-size: 18px;
 }
 
 .activity-category {
@@ -410,23 +414,23 @@ body {
 
 .action-btn {
     flex: 1;
-    padding: 12px;
+    padding: 14px;
     border: 1px solid #e0e0e0;
-    border-radius: 10px;
+    border-radius: 12px;
     background: white;
     color: #333;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .action-btn span {
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .action-btn.primary {
@@ -449,8 +453,8 @@ body {
 
 .spending-breakdown h3 {
     color: #102147;
-    font-size: 18px;
-    margin: 0 0 16px 0;
+    font-size: 22px;
+    margin: 0 0 20px 0;
 }
 
 .category-bars {
@@ -466,9 +470,10 @@ body {
 }
 
 .category-label {
-    min-width: 80px;
+    min-width: 90px;
     color: #333;
     font-weight: 500;
+    font-size: 18px;
 }
 
 .bar-container {
@@ -486,10 +491,11 @@ body {
 }
 
 .category-amount {
-    min-width: 60px;
+    min-width: 70px;
     text-align: right;
     color: #666;
     font-weight: 500;
+    font-size: 18px;
 }
 
 .upcoming-bills {
@@ -501,8 +507,8 @@ body {
 
 .upcoming-bills h3 {
     color: #102147;
-    font-size: 18px;
-    margin: 0 0 16px 0;
+    font-size: 22px;
+    margin: 0 0 20px 0;
 }
 
 .bill-item {
@@ -529,6 +535,7 @@ body {
 .bill-name {
     font-weight: 500;
     color: #333;
+    font-size: 18px;
 }
 
 .bill-due {
@@ -552,11 +559,11 @@ body {
 }
 
 .tip-icon {
-    font-size: 24px;
+    font-size: 28px;
 }
 
 .tip-text {
     color: #333;
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.4;
 }
