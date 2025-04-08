@@ -1,0 +1,1199 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f7fa;
+}
+
+
+.phone-frame {
+    width: 640px;  /* should not change */
+    height: 960px; /* should not change */
+    background-color: #fff;
+    border-radius: 150px 150px 40px 40px;
+    position: relative;
+    overflow: hidden;
+  
+}
+
+.screen {
+    position: absolute;
+    top: 150px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    background-color: #fff;
+    border-radius: 30px;
+    overflow: hidden;
+    border: 6px solid #0f0e0edc;
+}
+
+
+.status-bar {
+    height: 50px;
+    background-color: #1e3a8a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: white;
+    font-weight: 500;
+}
+
+.time {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.status-icons {
+    display: flex;
+    gap: 12px;
+    font-size: 18px;
+}
+
+
+.app-content {
+    height: calc(100% - 50px - 70px); /* Subtract status bar and nav bar height */
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9fafc;
+    overflow: hidden; /* Ensure no scrolling */
+}
+
+/* Welcome Survey */
+.welcome-survey {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.survey-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.survey-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #102147;
+    margin-bottom: 12px;
+}
+
+.survey-subtitle {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.survey-step {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.step-indicator {
+    display: flex;
+    gap: 12px;
+}
+
+.step-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+}
+
+.step-dot.active {
+    background-color: #4b7bec;
+}
+
+.step-number {
+    color: #888;
+    font-size: 16px;
+}
+
+.survey-question {
+    margin: 20px 0;
+}
+
+.question-text {
+    font-size: 22px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.answer-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.option {
+    padding: 14px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.option:hover {
+    border-color: #4b7bec;
+    background-color: #f5f9ff;
+}
+
+.option.selected {
+    border-color: #4b7bec;
+    background-color: #f5f9ff;
+}
+
+.option-radio {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #c0c0c0;
+    border-radius: 50%;
+    margin-right: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.option.selected .option-radio {
+    border-color: #4b7bec;
+}
+
+.option.selected .option-radio::after {
+    content: "";
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #4b7bec;
+}
+
+.option-text {
+    font-size: 18px;
+    color: #333;
+}
+
+.survey-buttons {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn {
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    outline: none;
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 1px solid #d0d0d0;
+    color: #666;
+}
+
+.btn-outline:hover {
+    background-color: #f5f5f5;
+}
+
+.btn-primary {
+    background-color: #1e3a8a;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #1c366b;
+}
+
+
+.empty-screen {
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: #888;
+    font-size: 18px;
+    text-align: center;
+    padding: 20px;
+}
+
+
+.nav-bar {
+    height: 70px;
+    background-color: white;
+    border-top: 1px solid #e9ecef;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0;
+    cursor: pointer;
+    width: 25%;
+    transition: all 0.2s ease;
+}
+
+.nav-icon {
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 28px;
+}
+
+.nav-icon svg {
+    width: 24px;
+    height: 24px;
+    color: #a0aec0;
+    transition: all 0.2s ease;
+}
+
+.nav-label {
+    font-size: 12px;
+    color: #718096;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.nav-item.active .nav-icon svg,
+.nav-item.active .nav-label {
+    color: #1e3a8a;
+    font-weight: 600;
+}
+
+.nav-item:hover .nav-icon svg,
+.nav-item:hover .nav-label {
+    color: #4a5568;
+}
+
+/* Home Screen Styles */
+#home-screen {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    gap: 12px;
+}
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 16px;
+    overflow: hidden;
+}
+
+.budget-summary {
+    background-color: white;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.budget-summary h2 {
+    margin: 0 0 12px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.budget-progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 16px;
+}
+
+.circular-progress {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+}
+
+.circular-progress svg {
+    position: relative;
+    transform: rotate(-90deg);
+    width: 100%;
+    height: 100%;
+}
+
+.circular-progress svg text {
+    transform: rotate(90deg);
+}
+
+.circular-progress .progress-text {
+    font-size: 20px;
+    font-weight: 700;
+    fill: #1e3a8a;
+    transform: none;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+.budget-info {
+    text-align: right;
+    flex-grow: 1;
+    min-width: 150px;
+}
+
+.balance-amount {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 4px;
+    white-space: nowrap;
+}
+
+.balance-label {
+    font-size: 14px;
+    color: #718096;
+    margin-bottom: 8px;
+    white-space: nowrap;
+}
+
+.budget-date {
+    font-size: 14px;
+    color: #a0aec0;
+    font-weight: 500;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.section-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.view-all {
+    font-size: 14px;
+    color: #4299e1;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.quick-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.action-btn {
+    flex: 1;
+    background-color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4a5568;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.action-btn span {
+    font-size: 16px;
+}
+
+.action-btn.primary {
+    background-color: #1e3a8a;
+    color: white;
+}
+
+.action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.recent-activity {
+    background-color: white;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 12px;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 12px;
+    background-color: #f9fafc;
+    transition: all 0.2s ease;
+}
+
+.activity-item:hover {
+    background-color: #f1f5f9;
+}
+
+.activity-amount {
+    font-weight: 600;
+    font-size: 16px;
+    color: #e53e3e;
+    min-width: 60px;
+    text-align: left;
+}
+
+.activity-details {
+    flex: 1;
+    padding: 0 12px;
+}
+
+.activity-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: #2d3748;
+    margin-bottom: 2px;
+}
+
+.activity-category {
+    font-size: 13px;
+    color: #718096;
+}
+
+.activity-time {
+    font-size: 13px;
+    color: #a0aec0;
+    text-align: right;
+}
+
+.finance-tip {
+    display: flex;
+    gap: 12px;
+    background-color: #ebf8ff;
+    border-radius: 16px;
+    padding: 12px;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.tip-icon {
+    font-size: 24px;
+}
+
+.tip-content {
+    flex: 1;
+}
+
+.tip-title {
+    font-weight: 600;
+    font-size: 15px;
+    color: #2c5282;
+    margin-bottom: 2px;
+}
+
+.tip-text {
+    font-size: 13px;
+    color: #4a5568;
+}
+
+/* Manage Screen Styles */
+.manage-container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.manage-container h2 {
+    color: #102147;
+    font-size: 24px;
+    margin: 0;
+}
+
+.manage-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.manage-option {
+    padding: 20px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.manage-option:hover {
+    transform: translateY(-4px);
+}
+
+.option-icon {
+    font-size: 32px;
+}
+
+.option-text {
+    font-weight: 500;
+    color: #333;
+    text-align: center;
+}
+
+/* Text Size Classes */
+body.text-small {
+    font-size: 0.9em;
+}
+
+body.text-medium {
+    font-size: 1em;
+}
+
+body.text-large {
+    font-size: 1.2em;
+}
+
+/* High Contrast Mode */
+body.high-contrast {
+    background-color: #000;
+}
+
+body.high-contrast .phone-frame {
+    background-color: #000;
+}
+
+body.high-contrast .screen {
+    background-color: #000;
+    border-color: #333;
+}
+
+body.high-contrast .status-bar {
+    background-color: #333;
+}
+
+body.high-contrast .app-content {
+    background-color: #000;
+}
+
+body.high-contrast .nav-bar {
+    background-color: #1a1a1a;
+    border-top: 1px solid #333;
+    box-shadow: none;
+}
+
+body.high-contrast .nav-icon svg,
+body.high-contrast .nav-label {
+    color: #999;
+}
+
+body.high-contrast .nav-item.active .nav-icon svg,
+body.high-contrast .nav-item.active .nav-label {
+    color: #ffeb3b;
+}
+
+body.high-contrast .welcome-survey,
+body.high-contrast .budget-summary,
+body.high-contrast .recent-activity,
+body.high-contrast .spending-breakdown,
+body.high-contrast .upcoming-bills,
+body.high-contrast .income-comparison,
+body.high-contrast .spending-by-category,
+body.high-contrast .settings-section,
+body.high-contrast .manage-option,
+body.high-contrast .action-btn,
+body.high-contrast .finance-tip,
+body.high-contrast .activity-item {
+    background-color: #000;
+    box-shadow: 0 0 0 1px #fff;
+}
+
+body.high-contrast .survey-title,
+body.high-contrast .budget-summary h2,
+body.high-contrast .recent-activity h3,
+body.high-contrast .spending-breakdown h3,
+body.high-contrast .upcoming-bills h3,
+body.high-contrast .income-comparison h3,
+body.high-contrast .spending-by-category h3,
+body.high-contrast .settings-container h2,
+body.high-contrast .settings-section h3,
+body.high-contrast .activity-name,
+body.high-contrast .tip-title,
+body.high-contrast .option-text,
+body.high-contrast .balance-amount,
+body.high-contrast .setting-label {
+    color: #ffff00;
+}
+
+body.high-contrast .option-radio {
+    border-color: #fff;
+}
+
+body.high-contrast .survey-subtitle,
+body.high-contrast .balance-label,
+body.high-contrast .progress-label,
+body.high-contrast .activity-category,
+body.high-contrast .activity-time,
+body.high-contrast .tip-text,
+body.high-contrast .budget-date {
+    color: #fff;
+}
+
+body.high-contrast .toggle-slider {
+    background-color: #666;
+}
+
+body.high-contrast input:checked + .toggle-slider {
+    background-color: #ffff00;
+}
+
+body.high-contrast .circular-progress .progress-bg {
+    stroke: #333;
+}
+
+body.high-contrast .circular-progress .progress-bar {
+    stroke: #ffff00;
+}
+
+body.high-contrast .circular-progress .progress-text {
+    fill: #ffff00;
+}
+
+body.high-contrast .btn-primary {
+    background-color: #ffff00;
+    color: #000;
+}
+
+/* Reports Screen Styles */
+#reports-screen {
+    display: none;
+    flex-direction: column;
+    padding: 16px;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.reports-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.reports-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.reports-header h2 {
+    color: #102147;
+    font-size: 24px;
+    margin: 0;
+}
+
+.filter-dropdown select {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    background-color: white;
+    font-size: 16px;
+    color: #333;
+}
+
+.income-comparison, .spending-by-category {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.income-comparison h3, .spending-by-category h3 {
+    color: #102147;
+    font-size: 20px;
+    margin: 0 0 16px 0;
+}
+
+.chart-container {
+    height: 250px;
+    position: relative;
+}
+
+.budget-alert {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff5f5;
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 10px;
+}
+
+.budget-alert.hidden {
+    display: none;
+}
+
+.alert-icon {
+    font-size: 24px;
+}
+
+.alert-message {
+    color: #ff4757;
+    font-weight: 500;
+}
+
+/* Settings Screen Styles */
+#settings-screen {
+    display: none;
+    flex-direction: column;
+    padding: 16px;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.settings-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.settings-container h2 {
+    color: #102147;
+    font-size: 24px;
+    margin: 0 0 20px 0;
+}
+
+.settings-section {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.settings-section h3 {
+    color: #102147;
+    font-size: 20px;
+    margin: 0 0 16px 0;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+.setting-label {
+    font-size: 18px;
+    color: #333;
+}
+
+.setting-control select {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    background-color: white;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Toggle Switch */
+.toggle {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 24px;
+}
+
+.toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .toggle-slider {
+    background-color: #4b7bec;
+}
+
+input:checked + .toggle-slider:before {
+    transform: translateX(26px);
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+}
+
+body.dark-mode .phone-frame {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode .screen {
+    background-color: #1e1e1e;
+    border-color: #333;
+}
+
+body.dark-mode .status-bar {
+    background-color: #0a1631;
+}
+
+body.dark-mode .app-content {
+    background-color: #121212;
+}
+
+body.dark-mode .nav-bar {
+    background-color: #1e1e1e;
+    border-top-color: #333;
+}
+
+body.dark-mode .nav-icon svg,
+body.dark-mode .nav-label {
+    color: #aaa;
+}
+
+body.dark-mode .nav-item.active .nav-icon svg,
+body.dark-mode .nav-item.active .nav-label {
+    color: #4b7bec;
+}
+
+body.dark-mode .welcome-survey,
+body.dark-mode .budget-summary,
+body.dark-mode .recent-activity,
+body.dark-mode .spending-breakdown,
+body.dark-mode .upcoming-bills,
+body.dark-mode .income-comparison,
+body.dark-mode .spending-by-category,
+body.dark-mode .settings-section {
+    background-color: #1e1e1e;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+body.dark-mode .survey-title,
+body.dark-mode .budget-summary h2,
+body.dark-mode .recent-activity h3,
+body.dark-mode .spending-breakdown h3,
+body.dark-mode .upcoming-bills h3,
+body.dark-mode .income-comparison h3,
+body.dark-mode .spending-by-category h3,
+body.dark-mode .settings-container h2,
+body.dark-mode .settings-section h3 {
+    color: #e0e0e0;
+}
+
+body.dark-mode .survey-subtitle,
+body.dark-mode .balance-label,
+body.dark-mode .progress-label,
+body.dark-mode .activity-category,
+body.dark-mode .activity-time,
+body.dark-mode .category-label,
+body.dark-mode .category-amount,
+body.dark-mode .bill-due,
+body.dark-mode .tip-text,
+body.dark-mode .setting-label {
+    color: #aaa;
+}
+
+body.dark-mode .balance-amount,
+body.dark-mode .activity-amount,
+body.dark-mode .activity-name,
+body.dark-mode .bill-name,
+body.dark-mode .bill-amount {
+    color: #e0e0e0;
+}
+
+body.dark-mode .option {
+    border-color: #333;
+}
+
+body.dark-mode .option:hover,
+body.dark-mode .option.selected {
+    background-color: #2a2a2a;
+    border-color: #4b7bec;
+}
+
+body.dark-mode .option-text {
+    color: #e0e0e0;
+}
+
+body.dark-mode .btn-outline {
+    border-color: #333;
+    color: #aaa;
+}
+
+body.dark-mode .btn-outline:hover {
+    background-color: #2a2a2a;
+}
+
+body.dark-mode .action-btn {
+    background-color: #1e1e1e;
+    border-color: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .action-btn.primary {
+    background-color: #44db7e;
+    color: #000;
+}
+
+body.dark-mode .activity-item,
+body.dark-mode .bill-item {
+    background-color: #2a2a2a;
+}
+
+body.dark-mode .bill-item.warning {
+    background-color: #3a2a2a;
+}
+
+body.dark-mode .finance-tip {
+    background-color: #2a2a2a;
+}
+
+body.dark-mode .budget-alert {
+    background-color: #3a2a2a;
+}
+
+body.dark-mode .filter-dropdown select,
+body.dark-mode .setting-control select {
+    background-color: #2a2a2a;
+    border-color: #333;
+    color: #e0e0e0;
+}
+
+body.dark-mode .toggle-slider {
+    background-color: #555;
+}
+
+body.dark-mode input:checked + .toggle-slider {
+    background-color: #4b7bec;
+}
+
+/* Circular progress colors */
+.circular-progress .progress-bg {
+    stroke: #e2e8f0;
+}
+
+.circular-progress .progress-bar {
+    stroke: #3182ce;
+}
+
+/* Add animation and transition styles */
+.animated-element {
+    transition: all 0.3s ease;
+}
+
+/* Screen transitions */
+#welcome-survey, #home-screen, #reports-screen, #manage-screen, #settings-screen {
+    transition: opacity 0.2s ease-in-out;
+    opacity: 1;
+}
+
+/* Hover effect for clickable items */
+.activity-item, .manage-option, .finance-tip {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.activity-item:hover, .manage-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.finance-tip:hover {
+    transform: scale(1.01);
+}
+
+/* Pulse animation for the action button */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.action-btn.primary {
+    animation: pulse 2s infinite;
+}
+
+.action-btn.primary:hover {
+    animation: none;
+    transform: translateY(-2px);
+}
+
+/* Progress bar animation */
+.progress-bar {
+    transition: stroke-dashoffset 1.5s ease-in-out;
+}
+
+/* Make option selection more interactive */
+.option {
+    transition: all 0.2s ease;
+}
+
+.option:active {
+    transform: scale(0.98);
+}
+
+/* Improve navigation bar interactivity */
+.nav-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background-color: #1e3a8a;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-item.active::after {
+    width: 50%;
+}
+
+.nav-item:hover::after {
+    width: 30%;
+}
+
+/* Soften box shadows */
+.budget-summary, .recent-activity, .finance-tip {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.budget-summary:hover, .recent-activity:hover {
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Button ripple effect */
+.btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%, -50%);
+    transform-origin: 50% 50%;
+}
+
+.btn:active::after {
+    animation: ripple 0.6s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0) translate(-50%, -50%);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20) translate(-50%, -50%);
+        opacity: 0;
+    }
+}
+
+/* Fade-in animation for newly loaded content */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.home-container, .reports-container, .manage-container, .settings-container {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Prevent overflow in app containers */
+.app-content {
+    overflow: hidden;
+}
+
+.home-container, .reports-container, .manage-container, .settings-container {
+    height: 100%;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
