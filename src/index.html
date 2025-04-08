@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Assistant</title>
+
+    <link rel="stylesheet" href="./css/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <div class="tab-content">
+            <div id="Dashboard" class="tab-pane active">
+                <div class="dashboard-container">
+                    <div class="dashboard-header">
+                        <h2>Financial Summary</h2>
+                        <p class="period-indicator">May 2023</p>
+                    </div>
+                    
+                    <div class="summary-card">
+                        <div class="card-header">
+                            <h3>Budget Overview</h3>
+                        </div>
+                        <div class="budget-progress">
+                            <div class="progress-stats">
+                                <div class="stat">
+                                    <span class="label">Spent</span>
+                                    <span class="value">$1,240</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="label">Remaining</span>
+                                    <span class="value">$760</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="label">Total</span>
+                                    <span class="value">$2,000</span>
+                                </div>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" style="width: 62%"></div>
+                            </div>
+                            <div class="view-budget-btn" id="view-budget-btn">
+                                <span>View Budget Details</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="summary-card">
+                        <div class="card-header">
+                            <h3>Top Categories</h3>
+                        </div>
+                        <div class="category-list">
+                            <div class="category-item">
+                                <div class="category-icon housing">
+                                    <i class="material-icons">home</i>
+                                </div>
+                                <div class="category-details">
+                                    <div class="category-name">Housing</div>
+                                    <div class="category-progress-container">
+                                        <div class="category-progress" style="width: 80%"></div>
+                                    </div>
+                                    <div class="category-values">
+                                        <span>$800 of $1000</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-icon food">
+                                    <i class="material-icons">restaurant</i>
+                                </div>
+                                <div class="category-details">
+                                    <div class="category-name">Food</div>
+                                    <div class="category-progress-container">
+                                        <div class="category-progress" style="width: 60%"></div>
+                                    </div>
+                                    <div class="category-values">
+                                        <span>$300 of $500</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-icon transport">
+                                    <i class="material-icons">directions_car</i>
+                                </div>
+                                <div class="category-details">
+                                    <div class="category-name">Transport</div>
+                                    <div class="category-progress-container">
+                                        <div class="category-progress" style="width: 40%"></div>
+                                    </div>
+                                    <div class="category-values">
+                                        <span>$140 of $350</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="quick-actions">
+                        <button class="action-button" id="add-expense-btn">
+                            <i class="material-icons">add_circle</i>
+                            <span>Add Expense</span>
+                        </button>
+                        <button class="action-button" id="remaining-balance-btn">
+                            <i class="material-icons">account_balance_wallet</i>
+                            <span>Remaining Balance</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Expenses" class="tab-pane">
+                <div class="expenses-container">
+                    <div class="section-header">
+                        <h2>Expenses</h2>
+                    </div>
+                    
+                    <div class="expenses-form" id="expense-form">
+                        <div class="form-group">
+                            <label for="expense-amount">Amount ($)</label>
+                            <input type="number" id="expense-amount" placeholder="0.00">
+                        </div>
+                        <div class="form-group">
+                            <label for="expense-category">Category</label>
+                            <select id="expense-category">
+                                <option value="housing">Housing</option>
+                                <option value="food">Food</option>
+                                <option value="transport">Transport</option>
+                                <option value="utilities">Utilities</option>
+                                <option value="entertainment">Entertainment</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="expense-description">Description</label>
+                            <input type="text" id="expense-description" placeholder="Enter description">
+                        </div>
+                        <div class="form-group">
+                            <label for="expense-date">Date</label>
+                            <input type="date" id="expense-date">
+                        </div>
+                        <button class="submit-button" id="save-expense-btn">Save Expense</button>
+                    </div>
+                    
+                    <div class="expenses-list">
+                        <div class="expense-item">
+                            <div class="expense-icon housing">
+                                <i class="material-icons">home</i>
+                            </div>
+                            <div class="expense-details">
+                                <div class="expense-primary">
+                                    <span class="expense-name">Rent Payment</span>
+                                    <span class="expense-amount">$800</span>
+                                </div>
+                                <div class="expense-secondary">
+                                    <span class="expense-date">May 1, 2023</span>
+                                    <span class="expense-category">Housing</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="expense-item">
+                            <div class="expense-icon food">
+                                <i class="material-icons">restaurant</i>
+                            </div>
+                            <div class="expense-details">
+                                <div class="expense-primary">
+                                    <span class="expense-name">Grocery Shopping</span>
+                                    <span class="expense-amount">$120</span>
+                                </div>
+                                <div class="expense-secondary">
+                                    <span class="expense-date">May 3, 2023</span>
+                                    <span class="expense-category">Food</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="expense-item">
+                            <div class="expense-icon transport">
+                                <i class="material-icons">directions_car</i>
+                            </div>
+                            <div class="expense-details">
+                                <div class="expense-primary">
+                                    <span class="expense-name">Gas</span>
+                                    <span class="expense-amount">$45</span>
+                                </div>
+                                <div class="expense-secondary">
+                                    <span class="expense-date">May 5, 2023</span>
+                                    <span class="expense-category">Transport</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Budgets" class="tab-pane">
+                <div class="budgets-container">
+                    <div class="section-header">
+                        <h2>Budgets</h2>
+                    </div>
+                    
+                    <div class="budget-selector">
+                        <div class="budget-type">
+                            <input type="radio" id="monthly-budget" name="budget-type" value="monthly" checked>
+                            <label for="monthly-budget">Monthly</label>
+                        </div>
+                        <div class="budget-type">
+                            <input type="radio" id="weekly-budget" name="budget-type" value="weekly">
+                            <label for="weekly-budget">Weekly</label>
+                        </div>
+                        <div class="budget-type">
+                            <input type="radio" id="custom-budget" name="budget-type" value="custom">
+                            <label for="custom-budget">Custom</label>
+                        </div>
+                    </div>
+                    
+                    <div class="budget-total">
+                        <span class="budget-label">Total Budget:</span>
+                        <span class="budget-value">$2,000</span>
+                    </div>
+                    
+                    <div class="budget-progress-container">
+                        <div class="progress-details">
+                            <span>$1,240 spent of $2,000</span>
+                            <span class="percentage">62%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 62%"></div>
+                        </div>
+                        <div class="remaining-budget">
+                            <span class="remaining-label">Remaining:</span>
+                            <span class="remaining-value">$760</span>
+                        </div>
+                    </div>
+                    
+                    <div class="budget-categories">
+                        <h3>Budget Allocation</h3>
+                        
+                        <div class="budget-category">
+                            <div class="category-header">
+                                <div class="category-icon housing">
+                                    <i class="material-icons">home</i>
+                                </div>
+                                <div class="category-name">Housing</div>
+                                <div class="category-allocation">$1,000</div>
+                            </div>
+                            <div class="category-progress-container">
+                                <div class="category-progress" style="width: 80%"></div>
+                            </div>
+                            <div class="category-details">
+                                <span>$800 spent (80%)</span>
+                                <span>$200 remaining</span>
+                            </div>
+                        </div>
+                        
+                        <div class="budget-category">
+                            <div class="category-header">
+                                <div class="category-icon food">
+                                    <i class="material-icons">restaurant</i>
+                                </div>
+                                <div class="category-name">Food</div>
+                                <div class="category-allocation">$500</div>
+                            </div>
+                            <div class="category-progress-container">
+                                <div class="category-progress" style="width: 60%"></div>
+                            </div>
+                            <div class="category-details">
+                                <span>$300 spent (60%)</span>
+                                <span>$200 remaining</span>
+                            </div>
+                        </div>
+                        
+                        <div class="budget-category">
+                            <div class="category-header">
+                                <div class="category-icon transport">
+                                    <i class="material-icons">directions_car</i>
+                                </div>
+                                <div class="category-name">Transport</div>
+                                <div class="category-allocation">$350</div>
+                            </div>
+                            <div class="category-progress-container">
+                                <div class="category-progress" style="width: 40%"></div>
+                            </div>
+                            <div class="category-details">
+                                <span>$140 spent (40%)</span>
+                                <span>$210 remaining</span>
+                            </div>
+                        </div>
+                        
+                        <div class="budget-category">
+                            <div class="category-header">
+                                <div class="category-icon utilities">
+                                    <i class="material-icons">power</i>
+                                </div>
+                                <div class="category-name">Utilities</div>
+                                <div class="category-allocation">$150</div>
+                            </div>
+                            <div class="category-progress-container">
+                                <div class="category-progress" style="width: 0%"></div>
+                            </div>
+                            <div class="category-details">
+                                <span>$0 spent (0%)</span>
+                                <span>$150 remaining</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="Goals" class="tab-pane">
+                <div class="goals-container">
+                    <div class="section-header">
+                        <h2>Financial Goals</h2>
+                    </div>
+                    
+                    <div class="goals-list">
+                        <div class="goal-item">
+                            <div class="goal-info">
+                                <h3>Vacation Fund</h3>
+                                <p class="goal-deadline">Target: December 2023</p>
+                            </div>
+                            <div class="goal-progress">
+                                <div class="goal-progress-text">
+                                    <span>$1,500 of $3,000</span>
+                                    <span>50%</span>
+                                </div>
+                                <div class="goal-progress-bar-container">
+                                    <div class="goal-progress-bar" style="width: 50%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="goal-item">
+                            <div class="goal-info">
+                                <h3>Emergency Fund</h3>
+                                <p class="goal-deadline">Target: Ongoing</p>
+                            </div>
+                            <div class="goal-progress">
+                                <div class="goal-progress-text">
+                                    <span>$2,000 of $5,000</span>
+                                    <span>40%</span>
+                                </div>
+                                <div class="goal-progress-bar-container">
+                                    <div class="goal-progress-bar" style="width: 40%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="goal-item">
+                            <div class="goal-info">
+                                <h3>New Laptop</h3>
+                                <p class="goal-deadline">Target: August 2023</p>
+                            </div>
+                            <div class="goal-progress">
+                                <div class="goal-progress-text">
+                                    <span>$800 of $1,200</span>
+                                    <span>67%</span>
+                                </div>
+                                <div class="goal-progress-bar-container">
+                                    <div class="goal-progress-bar" style="width: 67%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="add-goal-button">
+                        <i class="material-icons">add</i>
+                        <span>Add New Goal</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="Settings" class="tab-pane">
+                <div class="settings-container">
+                    <div class="section-header">
+                        <h2>Settings</h2>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3>User Profile</h3>
+                        <div class="profile-info">
+                            <div class="profile-picture">
+                                <i class="material-icons">person</i>
+                            </div>
+                            <div class="user-name">John Doe</div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3>Appearance</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-label">Theme</div>
+                            <div class="setting-options">
+                                <select id="theme-selector">
+                                    <option value="default">Default</option>
+                                    <option value="dark">Dark</option>
+                                    <option value="high-contrast">High Contrast</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-label">Text Size</div>
+                            <div class="setting-options">
+                                <select id="text-size-selector">
+                                    <option value="small">Small</option>
+                                    <option value="medium" selected>Medium</option>
+                                    <option value="large">Large</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3>Budget Preferences</h3>
+                        
+                        <div class="setting-item">
+                            <div class="setting-label">Default Budget Period</div>
+                            <div class="setting-options">
+                                <select id="default-budget-period">
+                                    <option value="monthly" selected>Monthly</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="custom">Custom</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="setting-item">
+                            <div class="setting-label">Currency</div>
+                            <div class="setting-options">
+                                <select id="currency-selector">
+                                    <option value="usd" selected>USD ($)</option>
+                                    <option value="eur">EUR (€)</option>
+                                    <option value="gbp">GBP (£)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="save-settings-button">Save Settings</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-nav">
+            <button class="tab-button active" data-tab="Dashboard">
+                <i class="material-icons">dashboard</i>
+                <span>Dashboard</span>
+            </button>
+            <button class="tab-button" data-tab="Expenses">
+                <i class="material-icons">receipt</i>
+                <span>Expenses</span>
+            </button>
+            <button class="tab-button" data-tab="Budgets">
+                <i class="material-icons">account_balance</i>
+                <span>Budgets</span>
+            </button>
+            <button class="tab-button" data-tab="Goals">
+                <i class="material-icons">flag</i>
+                <span>Goals</span>
+            </button>
+            <button class="tab-button" data-tab="Settings">
+                <i class="material-icons">settings</i>
+                <span>Settings</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="./js/script.js"></script>
+    <script src="./js/financeApp.js"></script>
+</body>
+</html> 
