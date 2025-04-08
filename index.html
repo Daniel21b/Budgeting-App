@@ -24,94 +24,62 @@
             <p class="survey-subtitle">Set up your income, expenses, and savings goals</p>
           </div>
 
-          <!-- <div class="survey-step">
-            <div class="step-indicator">
-              <div class="step-dot active"></div>
-              <div class="step-dot"></div>
-              <div class="step-dot"></div>
-            </div>
-           
-          </div> -->
-
           <!-- Income Form -->
           <section class="income-section">
             <h3 class="question-text">Enter Your Income</h3>
+            <div id="income-error" class="error-message"></div>
             <div id="income-list"></div>
             <button class="btn btn-primary" onclick="addIncome()">Add Income</button>
+            <button class="btn btn-primary" onclick="submitIncome()">Submit</button>
           </section>
 
           <!-- Expense Form -->
           <section class="expense-section">
-            <h3 class="question-text">Enter Your Expenses</h3>
+            <h3 class="question-text">Enter Your Expense</h3>
+            <div id="expense-error" class="error-message"></div>
             <div id="expense-list"></div>
             <button class="btn btn-primary" onclick="addExpense()">Add Expense</button>
+            <button class="btn btn-primary" onclick="submitExpense()">Submit</button>
           </section>
 
           <!-- Savings Form -->
           <section class="savings-section">
             <h3 class="question-text">Enter Your Savings Goals</h3>
+            <div id="savings-error" class="error-message"></div>
             <div id="savings-list"></div>
             <button class="btn btn-primary" onclick="addSavingsGoal()">Add Savings Goal</button>
+            <button class="btn btn-primary" onclick="submitSavingsGoal()">Submit</button>
           </section>
-
-          <div class="survey-buttons">
-            <button class="btn btn-outline" onclick="calculateBudget()">Calculate Budget</button>
-          </div>
-
-          <div class="empty-screen" id="empty-screen">
-            No data entered yet.
-          </div>
+          <br>
+          <button class="btn btn-primary" onclick="resetBudget()">Reset Budget</button>
+          <div class="empty-screen" id="empty-screen">No data entered yet.</div>
         </div>
-      </div>
-
-      <div class="nav-bar">
-        <div class="nav-item active">
-          <div class="nav-icon">
-            <svg width="24" height="24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg>
+        <div class="budget-results" id="budget-results" style="display:none;">
+            <div class="result-item">
+              <span class="result-label">Monthly Income:</span>
+              <span id="monthly-income" class="result-value">0</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Monthly Expenses:</span>
+              <span id="monthly-expenses" class="result-value">0</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Remaining Budget:</span>
+              <span id="remaining-budget" class="result-value">0</span>
+            </div>
+            <div class="result-item">
+              <span class="result-label">Savings Allocated:</span>
+              <span id="savings-allocated" class="result-value">0</span>
+            </div>
+            <div class="result-item" id="budget-warning" style="color: red;"></div>
           </div>
-          <div class="nav-label">Home</div>
-        </div>
-        <div class="nav-item">
-          <div class="nav-icon">
-            <svg width="24" height="24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg>
-          </div>
-          <div class="nav-label">Stats</div>
-        </div>
-        <div class="nav-item">
-          <div class="nav-icon">
-            <svg width="24" height="24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg>
-          </div>
-          <div class="nav-label">Settings</div>
-        </div>
       </div>
     </div>
   </div>
 
+  <!-- Budget Results -->
+  
+
   <script src="script.js"></script>
-    <div class="budget-results">
-        <div class="result-item">
-        <span class="result-label">Monthly Income:</span>
-        <span id="monthly-income" class="result-value">0</span>
-        </div>
-        <div class="result-item">
-        <span class="result-label">Monthly Expenses:</span>
-        <span id="monthly-expenses" class="result-value">0</span>
-        </div>
-        <div class="result-item">
-        <span class="result-label">Remaining Budget:</span>
-        <span id="remaining-budget" class="result-value">0</span>
-        </div>
-        <div class="result-item">
-        <span class="result-label">Savings Allocated:</span>
-        <span id="savings-allocated" class="result-value">0</span>
-        </div>
-        <div class="result-item" id="budget-warning" style="color: red;"></div>
-    </div>
-  <div class="survey-buttons">
-  <button class="btn btn-outline" onclick="calculateBudget()">Calculate Budget</button>
-</div>
-
-
-
 </body>
 </html>
