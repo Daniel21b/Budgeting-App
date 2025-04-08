@@ -11,8 +11,8 @@ body {
 
 
 .phone-frame {
-    width: 450px;
-    height: 812px;
+    width: 640px;
+    height: 960px;
     background-color: #000;
     border-radius: 40px;
     position: relative;
@@ -53,12 +53,11 @@ body {
 
 
 .app-content {
-    height: calc(100% - 44px - 60px); /* Subtract status bar and nav bar height */
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    background-color: #fcfcfc;
-}
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    height: 100%;
+  }
 
 /* Welcome Survey */
 .welcome-survey {
@@ -223,7 +222,7 @@ body {
     justify-content: center;
     align-items: center;
     color: #888;
-    font-size: 18px;
+    font-size: 24px;
     text-align: center;
     padding: 20px;
 }
@@ -560,3 +559,28 @@ body {
     font-size: 14px;
     line-height: 1.4;
 }
+.bill-section {
+    margin-top: 20px;
+  }
+  
+  .bill-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  
+  .btn-small {
+    font-size: 14px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-small:hover {
+    background-color: #45a049;
+  }
+  
