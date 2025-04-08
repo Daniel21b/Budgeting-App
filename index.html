@@ -21,51 +21,7 @@
 
             <!-- App Content -->
             <div class="app-content">
-                <!-- Welcome Survey (default visible) -->
-                <div id="welcome-survey" class="welcome-survey">
-                    <div class="survey-header">
-                        <div class="survey-title">Welcome to BudgetPal</div>
-                        <div class="survey-subtitle">Let's set up your financial profile to personalize your experience</div>
-                    </div>
-
-                    <div class="survey-step">
-                        <div class="step-indicator">
-                            <div class="step-dot active"></div>
-                            <div class="step-dot"></div>
-                            <div class="step-dot"></div>
-                        </div>
-                        <div class="step-number">1 of 3</div>
-                    </div>
-
-                    <div class="survey-question">
-                        <div class="question-text">What's your primary financial goal?</div>
-                        <div class="answer-options">
-                            <div class="option" onclick="selectOption(this)">
-                                <div class="option-radio"></div>
-                                <div class="option-text">Save for a big purchase</div>
-                            </div>
-                            <div class="option" onclick="selectOption(this)">
-                                <div class="option-radio"></div>
-                                <div class="option-text">Build an emergency fund</div>
-                            </div>
-                            <div class="option" onclick="selectOption(this)">
-                                <div class="option-radio"></div>
-                                <div class="option-text">Track daily expenses</div>
-                            </div>
-                            <div class="option" onclick="selectOption(this)">
-                                <div class="option-radio"></div>
-                                <div class="option-text">Pay off debt</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="survey-buttons">
-                        <button class="btn btn-outline">Skip</button>
-                        <button class="btn btn-primary" onclick="showEmptyScreen('home')">Next</button>
-                    </div>
-                </div>
-
-                <!-- Empty Screens (initially hidden) -->
+                <!-- Home Screen -->
                 <div id="home-screen" class="empty-screen">
                     <div class="budget-summary">
                         <h2>Budget Overview</h2>
@@ -106,55 +62,311 @@
                         <button class="action-btn"><span>📊</span>Adjust Budget</button>
                         <button class="action-btn"><span>🎯</span>Set Goal</button>
                     </div>
-
-                    <div class="spending-breakdown">
-                        <h3>Monthly Breakdown</h3>
-                        <div class="category-bars">
-                            <div class="category-bar">
-                                <div class="category-label">Food</div>
-                                <div class="bar-container">
-                                    <div class="bar" style="width: 75%"></div>
-                                </div>
-                                <div class="category-amount">$450</div>
-                            </div>
-                            <div class="category-bar">
-                                <div class="category-label">Transport</div>
-                                <div class="bar-container">
-                                    <div class="bar" style="width: 45%"></div>
-                                </div>
-                                <div class="category-amount">$270</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="upcoming-bills">
-                        <h3>Upcoming Bills</h3>
-                        <div class="bill-item warning">
-                            <div class="bill-icon">📺</div>
-                            <div class="bill-details">
-                                <div class="bill-name">Netflix</div>
-                                <div class="bill-due">Due in 3 days</div>
-                            </div>
-                            <div class="bill-amount">$15.99</div>
-                        </div>
-                    </div>
-
-                    <div class="finance-tip">
-                        <div class="tip-icon">💡</div>
-                        <div class="tip-text">Pro Tip: Try tracking cash expenses daily to stay on budget.</div>
-                    </div>
                 </div>
                 
+                <!-- Reports Screen -->
                 <div id="reports-screen" class="empty-screen">
-                    Reports Screen<br>(Empty Placeholder)
+                    <div class="reports-container">
+                        <div class="reports-header">
+                            <h2>Financial Reports</h2>
+                            <div class="filter-dropdown">
+                                <select id="report-filter">
+                                    <option value="week">This Week</option>
+                                    <option value="last-week">Last Week</option>
+                                    <option value="month">This Month</option>
+                                    <option value="custom">Custom Range</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="reports-navigation">
+                            <div class="nav-dot active" data-page="income"></div>
+                            <div class="nav-dot" data-page="spending"></div>
+                            <div class="nav-dot" data-page="goals"></div>
+                        </div>
+                        
+                        <!-- Report Pages -->
+                        <div id="income-page" class="report-page active">
+                            <h3>Income Trends</h3>
+                            <div class="page-description">
+                                <h4>📋 What This Page Shows:</h4>
+                                <p>User's Earnings Progress</p>
+                            </div>
+                            
+                            <div class="chart-container">
+                                <div class="chart-header">
+                                    <h4>Earnings Breakdown</h4>
+                                    <div class="view-toggle">
+                                        <button class="toggle-btn active">Week View</button>
+                                        <button class="toggle-btn">Month View</button>
+                                    </div>
+                                </div>
+                                <div class="earnings-breakdown">
+                                    <div class="earnings-row">
+                                        <div class="day-info">
+                                            <span class="day">Monday</span>
+                                            <span class="date">Mar 18</span>
+                                        </div>
+                                        <div class="earnings-details">
+                                            <div class="earning-item">
+                                                <span class="source">Tutoring</span>
+                                                <span class="amount">$45</span>
+                                            </div>
+                                            <div class="earning-item">
+                                                <span class="source">Freelance</span>
+                                                <span class="amount">$85</span>
+                                            </div>
+                                        </div>
+                                        <div class="daily-total">$130</div>
+                                    </div>
+                                    <div class="earnings-row">
+                                        <div class="day-info">
+                                            <span class="day">Tuesday</span>
+                                            <span class="date">Mar 19</span>
+                                        </div>
+                                        <div class="earnings-details">
+                                            <div class="earning-item">
+                                                <span class="source">Tutoring</span>
+                                                <span class="amount">$60</span>
+                                            </div>
+                                        </div>
+                                        <div class="daily-total">$60</div>
+                                    </div>
+                                    <div class="earnings-row">
+                                        <div class="day-info">
+                                            <span class="day">Wednesday</span>
+                                            <span class="date">Mar 20</span>
+                                        </div>
+                                        <div class="earnings-details">
+                                            <div class="earning-item">
+                                                <span class="source">Freelance</span>
+                                                <span class="amount">$125</span>
+                                            </div>
+                                        </div>
+                                        <div class="daily-total">$125</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="summary-block">
+                                <div class="summary-item">
+                                    <div class="summary-label">Total Earned</div>
+                                    <div class="summary-value">$315</div>
+                                </div>
+                                <div class="summary-item">
+                                    <div class="summary-label">Average per Day</div>
+                                    <div class="summary-value">$45</div>
+                                </div>
+                                <div class="summary-item">
+                                    <div class="summary-label">Top Source</div>
+                                    <div class="summary-value">Tutoring</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="spending-page" class="report-page">
+                            <h3>Spending Overview</h3>
+                            <div class="page-description">
+                                <h4>📋 What This Page Shows:</h4>
+                                <p>Category-based spending analysis</p>
+                            </div>
+
+                            <div class="spending-container">
+                                <div class="spending-header">
+                                    <h4>Category Breakdown</h4>
+                                    <div class="view-toggle">
+                                        <button class="toggle-btn active">Week View</button>
+                                        <button class="toggle-btn">Month View</button>
+                                    </div>
+                                </div>
+
+                                <div class="category-breakdown">
+                                    <div class="category-row highlight">
+                                        <div class="category-info">
+                                            <span class="category-name">Dining</span>
+                                            <div class="budget-progress">
+                                                <div class="progress-fill warning" style="width: 78%"></div>
+                                            </div>
+                                            <span class="budget-percent">78% used</span>
+                                        </div>
+                                        <div class="category-details">
+                                            <span class="amount">$320</span>
+                                            <span class="percent">32%</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="category-row">
+                                        <div class="category-info">
+                                            <span class="category-name">Rent</span>
+                                            <div class="budget-progress">
+                                                <div class="progress-fill danger" style="width: 100%"></div>
+                                            </div>
+                                            <span class="budget-percent">100% used</span>
+                                        </div>
+                                        <div class="category-details">
+                                            <span class="amount">$800</span>
+                                            <span class="percent">40%</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="category-row">
+                                        <div class="category-info">
+                                            <span class="category-name">Entertainment</span>
+                                            <div class="budget-progress">
+                                                <div class="progress-fill success" style="width: 45%"></div>
+                                            </div>
+                                            <span class="budget-percent">45% used</span>
+                                        </div>
+                                        <div class="category-details">
+                                            <span class="amount">$150</span>
+                                            <span class="percent">15%</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="category-row">
+                                        <div class="category-info">
+                                            <span class="category-name">Groceries</span>
+                                            <div class="budget-progress">
+                                                <div class="progress-fill success" style="width: 60%"></div>
+                                            </div>
+                                            <span class="budget-percent">60% used</span>
+                                        </div>
+                                        <div class="category-details">
+                                            <span class="amount">$250</span>
+                                            <span class="percent">25%</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="alert-box warning">
+                                    <span class="alert-icon">⚠️</span>
+                                    <p class="alert-text">You've spent 78% of your dining budget</p>
+                                </div>
+                            </div>
+
+                            <div class="summary-block">
+                                <div class="summary-item">
+                                    <div class="summary-label">Total Spent</div>
+                                    <div class="summary-value">$1,520</div>
+                                </div>
+                                <div class="summary-item">
+                                    <div class="summary-label">Highest Category</div>
+                                    <div class="summary-value">Rent</div>
+                                </div>
+                                <div class="summary-item">
+                                    <div class="summary-label">Budget Used</div>
+                                    <div class="summary-value">65%</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="goals-page" class="report-page">
+                            <h3>Budget Goals & Status</h3>
+                            <div class="page-description">
+                                <h4>📋 What This Page Shows:</h4>
+                                <p>Track your budget usage and savings goals progress</p>
+                            </div>
+
+                            <div class="budget-status-container">
+                                <div class="budget-header">
+                                    <h4>Budget Categories</h4>
+                                </div>
+
+                                <div class="budget-categories">
+                                    <div class="category-row">
+                                        <div class="category-info">
+                                            <span class="category-name">Dining</span>
+                                            <div class="budget-progress">
+                                                <div class="progress-fill warning" style="width: 60%"></div>
+                                            </div>
+                                            <span class="budget-percent">60% used</span>
+                                        </div>
+                                        <div class="category-details">
+                                            <span class="amount">$240</span>
+                                            <span class="remaining">$160 left</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="category-row">
+                                        <div class="category-info">
+                                            <span class="category-name">Rent</span>
+                                            <div class="budget-progress">
+                                                <div class="progress-fill danger" style="width: 100%"></div>
+                                            </div>
+                                            <span class="budget-percent">100% used</span>
+                                        </div>
+                                        <div class="category-details">
+                                            <span class="amount">$800</span>
+                                            <span class="remaining">$0 left</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="category-row">
+                                        <div class="category-info">
+                                            <span class="category-name">Travel</span>
+                                            <div class="budget-progress">
+                                                <div class="progress-fill success" style="width: 20%"></div>
+                                            </div>
+                                            <span class="budget-percent">20% used</span>
+                                        </div>
+                                        <div class="category-details">
+                                            <span class="amount">$100</span>
+                                            <span class="remaining">$400 left</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="savings-goal-container">
+                                <div class="savings-header">
+                                    <h4>Savings Goal</h4>
+                                    <span class="goal-name">House Down Payment</span>
+                                </div>
+
+                                <div class="goal-progress">
+                                    <div class="progress-bar-large">
+                                        <div class="progress-fill success" style="width: 63%"></div>
+                                    </div>
+                                    <div class="goal-stats">
+                                        <div class="goal-amount">
+                                            <span class="current">$7,800</span>
+                                            <span class="separator">/</span>
+                                            <span class="target">$12,500</span>
+                                        </div>
+                                        <span class="goal-percent">63% to target</span>
+                                    </div>
+                                    <div class="goal-estimate">
+                                        Est. Completion: 4 months at current pace
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="alert-box warning">
+                                <span class="alert-icon">⚠️</span>
+                                <p class="alert-text">Balance below $1,000 — consider cutting back</p>
+                            </div>
+
+                            <button class="adjust-budget-btn">
+                                <span class="btn-icon">📝</span>
+                                Adjust Budget
+                            </button>
+                        </div>
+                        
+                        <div class="reports-navigation-buttons">
+                            <button id="prev-page" class="nav-btn" disabled>← Back</button>
+                            <button id="next-page" class="nav-btn">Next →</button>
+                        </div>
+                    </div>
                 </div>
                 
+                <!-- Goals Screen -->
                 <div id="goals-screen" class="empty-screen">
-                    Goals Screen<br>(Empty Placeholder)
+                    Goals Screen
                 </div>
                 
+                <!-- Settings Screen -->
                 <div id="settings-screen" class="empty-screen">
-                    Settings Screen<br>(Empty Placeholder)
+                    Settings Screen
                 </div>
             </div>
 

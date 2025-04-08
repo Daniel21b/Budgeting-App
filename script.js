@@ -1,17 +1,13 @@
 // Handle option selection in survey
 function selectOption(option) {
-    // Remove selected class from all options
     const options = document.querySelectorAll('.option');
     options.forEach(opt => opt.classList.remove('selected'));
-    
-    // Add selected class to clicked option
     option.classList.add('selected');
 }
 
 // Handle navigation
 function navigate(screen) {
     // Hide all screens
-    document.getElementById('welcome-survey').style.display = 'none';
     document.getElementById('home-screen').style.display = 'none';
     document.getElementById('reports-screen').style.display = 'none';
     document.getElementById('goals-screen').style.display = 'none';
@@ -24,10 +20,8 @@ function navigate(screen) {
     const navItems = document.querySelectorAll('.nav-item');
     navItems.forEach(item => item.classList.remove('active'));
     
-    // Find the nav item with matching screen and make it active
     const activeNav = Array.from(navItems).find(item => 
-        item.querySelector('.nav-label').textContent.toLowerCase() === screen ||
-        (item.querySelector('.nav-label').textContent === 'Home' && screen === 'home')
+        item.querySelector('.nav-label').textContent.toLowerCase() === screen
     );
     
     if (activeNav) {
@@ -54,24 +48,92 @@ function updateTime() {
     let hours = now.getHours();
     let minutes = now.getMinutes();
     
-    // Format time to 12-hour format
     const ampm = hours >= 12 ? 'PM' : 'AM';
     hours = hours % 12;
-    hours = hours ? hours : 12; // Convert 0 to 12
+    hours = hours ? hours : 12;
     minutes = minutes < 10 ? '0' + minutes : minutes;
     
     const timeString = `${hours}:${minutes} ${ampm}`;
     document.querySelector('.time').textContent = timeString;
 }
 
+// Handle reports page navigation
+function navigateReportPage(direction) {
+    const pages = ['income', 'spending', 'goals'];
+    const currentPage = document.querySelector('.report-page.active').id.replace('-page', '');
+    const currentIndex = pages.indexOf(currentPage);
+    
+    let newIndex;
+    if (direction === 'next') {
+        newIndex = currentIndex + 1;
+        if (newIndex >= pages.length) newIndex = pages.length - 1;
+    } else {
+        newIndex = currentIndex - 1;
+        if (newIndex < 0) newIndex = 0;
+    }
+    
+    // Update active page
+    document.querySelectorAll('.report-page').forEach(page => {
+        page.classList.remove('active');
+    });
+    document.getElementById(`${pages[newIndex]}-page`).classList.add('active');
+    
+    // Update navigation dots
+    document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+        if (index === newIndex) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+    
+    // Update navigation buttons
+    document.getElementById('prev-page').disabled = newIndex === 0;
+    document.getElementById('next-page').disabled = newIndex === pages.length - 1;
+}
 
+// Handle navigation dot click
+function handleNavDotClick(page) {
+    const pages = ['income', 'spending', 'goals'];
+    const newIndex = pages.indexOf(page);
+    
+    // Update active page
+    document.querySelectorAll('.report-page').forEach(p => {
+        p.classList.remove('active');
+    });
+    document.getElementById(`${page}-page`).classList.add('active');
+    
+    // Update navigation dots
+    document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+        if (index === newIndex) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.remove('active');
+        }
+    });
+    
+    // Update navigation buttons
+    document.getElementById('prev-page').disabled = newIndex === 0;
+    document.getElementById('next-page').disabled = newIndex === pages.length - 1;
+}
+
+// Initialize app
 document.addEventListener('DOMContentLoaded', function() {
+    // Show home screen by default
+    navigate('reports');
+    
+    // Update time
     updateTime();
     setInterval(updateTime, 60000); // Update every minute
     
-    // Add event listener for Skip button
-    const skipButton = document.querySelector('.btn-outline');
-    skipButton.addEventListener('click', function() {
-        showEmptyScreen('home');
+    // Add event listeners for navigation buttons
+    document.getElementById('prev-page').addEventListener('click', () => navigateReportPage('prev'));
+    document.getElementById('next-page').addEventListener('click', () => navigateReportPage('next'));
+    
+    // Add event listeners for navigation dots
+    document.querySelectorAll('.nav-dot').forEach(dot => {
+        dot.addEventListener('click', function() {
+            handleNavDotClick(this.getAttribute('data-page'));
+        });
     });
 });
