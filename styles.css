@@ -398,8 +398,16 @@ body {
     font-size: 20px;
     margin: 0 0 16px 0;
     font-weight: 600;
- 
-    margin-left: -400px;
+}
+
+#income-page h3 {
+    margin-left: -350px;
+    margin-top: 5px;
+}
+
+#spending-page h3,
+#goals-page h3 {
+    margin-left: -320px;
     margin-top: 5px;
 }
 
