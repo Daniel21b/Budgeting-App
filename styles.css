@@ -583,4 +583,9 @@ body {
     color: #4b7bec;
     font-weight: 600;
   }
+  .error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+  }
   
