@@ -66,6 +66,86 @@ function updateTime() {
     document.querySelector('.time').textContent = timeString;
 }
 
+// Toggle high contrast mode
+function toggleHighContrastMode() {
+    const htmlElement = document.documentElement;
+    const isHighContrast = document.getElementById('high-contrast-toggle').checked;
+    
+    if (isHighContrast) {
+        htmlElement.classList.add('high-contrast-mode');
+        localStorage.setItem('highContrastMode', 'enabled');
+    } else {
+        htmlElement.classList.remove('high-contrast-mode');
+        localStorage.setItem('highContrastMode', 'disabled');
+    }
+}
+
+// Change text size
+function changeTextSize(size) {
+    console.log(`Text size change requested: ${size}`);
+    
+    const htmlElement = document.documentElement;
+    
+    // Remove existing text size classes
+    htmlElement.classList.remove('text-size-small', 'text-size-medium', 'text-size-large');
+    
+    // Add selected text size class
+    htmlElement.classList.add(`text-size-${size}`);
+    
+    // Apply to document element so CSS variables propagate to all elements
+    if (size === 'small') {
+        console.log('Applying small text size (0.85x scale)');
+    } else if (size === 'medium') {
+        console.log('Applying medium text size (1x scale)');
+    } else if (size === 'large') {
+        console.log('Applying large text size (1.25x scale)');
+    }
+    
+    // Trigger a reflow to ensure styles are applied immediately
+    void htmlElement.offsetHeight;
+    
+    // Save to local storage
+    localStorage.setItem('textSize', size);
+    console.log(`Text size preference saved: ${size}`);
+    
+    // Verify application
+    const computedScale = getComputedStyle(htmlElement).getPropertyValue('--font-scale');
+    console.log(`Applied font scale: ${computedScale}`);
+}
+
+// Load accessibility settings from local storage
+function loadAccessibilitySettings() {
+    console.log('Loading accessibility settings from local storage');
+    
+    // Load high contrast setting
+    const highContrast = localStorage.getItem('highContrastMode');
+    if (highContrast === 'enabled') {
+        document.getElementById('high-contrast-toggle').checked = true;
+        document.documentElement.classList.add('high-contrast-mode');
+        console.log('High contrast mode enabled from saved preferences');
+    }
+    
+    // Load text size setting
+    const textSize = localStorage.getItem('textSize') || 'medium';
+    console.log(`Loaded text size preference: ${textSize}`);
+    
+    // Apply the text size class
+    document.documentElement.classList.add(`text-size-${textSize}`);
+    
+    // Make sure the correct radio button is checked
+    const radioButton = document.getElementById(`text-size-${textSize}`);
+    if (radioButton) {
+        radioButton.checked = true;
+        console.log(`Radio button for ${textSize} text size checked`);
+    } else {
+        console.warn(`Could not find radio button for ${textSize} text size`);
+    }
+    
+    // Verify text size application
+    const computedScale = getComputedStyle(document.documentElement).getPropertyValue('--font-scale');
+    console.log(`Applied font scale on load: ${computedScale}`);
+}
+
 // Handle reports page navigation
 function navigateReportPage(direction) {
     const pages = ['income', 'spending', 'goals'];
@@ -128,12 +208,52 @@ function handleNavDotClick(page) {
 
 // Handle form submissions
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded - Initializing app');
+    
     // Initialize navigation
     navigate('home');
     
     // Update time
     updateTime();
     setInterval(updateTime, 60000);
+    
+    try {
+        // Load accessibility settings
+        loadAccessibilitySettings();
+        
+        // Add event listener for high contrast toggle
+        const highContrastToggle = document.getElementById('high-contrast-toggle');
+        if (highContrastToggle) {
+            highContrastToggle.addEventListener('change', toggleHighContrastMode);
+            console.log('High contrast toggle event listener added');
+        } else {
+            console.warn('High contrast toggle element not found');
+        }
+        
+        // Add event listeners for text size options
+        const textSizeOptions = document.querySelectorAll('input[name="text-size"]');
+        if (textSizeOptions.length > 0) {
+            console.log(`Found ${textSizeOptions.length} text size option elements`);
+            
+            textSizeOptions.forEach(option => {
+                option.addEventListener('change', function() {
+                    if (this.checked) {
+                        console.log(`Text size option selected: ${this.value}`);
+                        try {
+                            changeTextSize(this.value);
+                        } catch (error) {
+                            console.error(`Error changing text size to ${this.value}:`, error);
+                        }
+                    }
+                });
+            });
+            console.log('Text size radio button event listeners added');
+        } else {
+            console.warn('No text size option elements found');
+        }
+    } catch (error) {
+        console.error('Error initializing accessibility features:', error);
+    }
     
     // Add Expense Form Handler
     const expenseForm = document.querySelector('.expense-form');
@@ -199,6 +319,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
 function markBillPaid(billName) {
     alert(`✅ ${billName} bill marked as paid!`);
 }

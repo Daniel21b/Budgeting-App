@@ -1,3 +1,27 @@
+/* Root variables */
+:root {
+    --font-scale: 1;
+    --base-font-size: 16px;
+    --small-text: calc(var(--base-font-size) * 0.85 * var(--font-scale));
+    --medium-text: calc(var(--base-font-size) * 1 * var(--font-scale));
+    --large-text: calc(var(--base-font-size) * 1.25 * var(--font-scale));
+    --xlarge-text: calc(var(--base-font-size) * 1.5 * var(--font-scale));
+}
+
+/* Text Sizes */
+.text-size-small {
+    --font-scale: 0.85;
+}
+
+.text-size-medium {
+    --font-scale: 1;
+}
+
+.text-size-large {
+    --font-scale: 1.25;
+}
+
+/* Global text sizing */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
@@ -7,6 +31,69 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #fff;
+    font-size: var(--medium-text);
+}
+
+h1 {
+    font-size: calc(var(--xlarge-text) * 1.2);
+}
+
+h2 {
+    font-size: var(--xlarge-text);
+}
+
+h3 {
+    font-size: calc(var(--large-text) * 1.1);
+}
+
+p, span, div, label, input, select, button {
+    font-size: var(--medium-text);
+}
+
+.nav-label {
+    font-size: calc(var(--medium-text) * 0.875);
+    color: #888;
+    transition: color 0.2s ease;
+}
+
+.time {
+    font-weight: bold;
+    font-size: calc(var(--medium-text) * 1.125);
+}
+
+.status-icons {
+    display: flex;
+    gap: 12px;
+    font-size: calc(var(--medium-text) * 1.125);
+}
+
+.balance-amount {
+    font-size: calc(var(--xlarge-text) * 1.5);
+    font-weight: 600;
+    color: #102147;
+}
+
+.balance-label {
+    color: #666;
+    margin-top: 4px;
+    font-size: calc(var(--medium-text) * 0.9);
+}
+
+.progress-label {
+    color: #666;
+    font-size: calc(var(--medium-text) * 0.875);
+}
+
+.activity-name, .category-name, .setting-title {
+    font-size: calc(var(--medium-text) * 1.125);
+}
+
+.activity-category, .activity-time, .budget-percent, .progress-label {
+    font-size: calc(var(--medium-text) * 0.75);
+}
+
+.toggle-btn, .summary-label, .goal-percent, .goal-estimate, .alert-text {
+    font-size: calc(var(--medium-text) * 0.875);
 }
 
 .phone-frame {
@@ -38,17 +125,6 @@ body {
     align-items: center;
     padding: 0 20px;
     color: white;
-}
-
-.time {
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.status-icons {
-    display: flex;
-    gap: 12px;
-    font-size: 18px;
 }
 
 .app-content {
@@ -106,12 +182,6 @@ body {
     transition: color 0.2s ease;
 }
 
-.nav-label {
-    font-size: 14px;
-    color: #888;
-    transition: color 0.2s ease;
-}
-
 .nav-item.active .nav-icon svg,
 .nav-item.active .nav-label {
     color: #102147;
@@ -156,7 +226,7 @@ body {
 
 .budget-summary h2 {
     color: #102147;
-    font-size: 24px;
+    font-size: calc(var(--large-text) * 1.2);
     margin: 0 0 20px 0;
 }
 
@@ -165,17 +235,6 @@ body {
     padding: 16px;
     background: white;
     border-radius: 12px;
-}
-
-.balance-amount {
-    font-size: 38px;
-    font-weight: 600;
-    color: #102147;
-}
-
-.balance-label {
-    color: #666;
-    margin-top: 4px;
 }
 
 .progress-container {
@@ -193,11 +252,6 @@ body {
     transition: width 0.3s ease;
 }
 
-.progress-label {
-    color: #666;
-    font-size: 14px;
-}
-
 .recent-activity {
     background: white;
     border-radius: 16px;
@@ -207,7 +261,7 @@ body {
 
 .recent-activity h3 {
     color: #102147;
-    font-size: 22px;
+    font-size: calc(var(--large-text) * 1.1);
     margin: 0 0 20px 0;
 }
 
@@ -245,16 +299,16 @@ body {
 .activity-name {
     font-weight: 500;
     color: #333;
-    font-size: 18px;
+    font-size: calc(var(--medium-text) * 1.125);
 }
 
 .activity-category {
-    font-size: 12px;
+    font-size: calc(var(--medium-text) * 0.75);
     color: #666;
 }
 
 .activity-time {
-    font-size: 12px;
+    font-size: calc(var(--medium-text) * 0.75);
     color: #888;
 }
 
@@ -271,7 +325,7 @@ body {
     border-radius: 12px;
     background: white;
     color: #333;
-    font-size: 16px;
+    font-size: var(--medium-text);
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
@@ -282,7 +336,7 @@ body {
 }
 
 .action-btn span {
-    font-size: 20px;
+    font-size: calc(var(--medium-text) * 1.25);
 }
 
 .action-btn.primary {
@@ -299,7 +353,7 @@ body {
 .action-btn.manage-btn {
     width: 80%;
     padding: 16px;
-    font-size: 18px;
+    font-size: calc(var(--medium-text) * 1.125);
     background: #44db7e;
     color: #000000;
     border: none;
@@ -351,7 +405,7 @@ body {
 
 .reports-header h2 {
     color: #102147;
-    font-size: 24px;
+    font-size: calc(var(--large-text) * 1.2);
     margin: 0;
     font-weight: 600;
 }
@@ -431,7 +485,7 @@ body {
 
 .report-page h3 {
     color: #102147;
-    font-size: 20px;
+    font-size: calc(var(--large-text) * 1.1);
     margin: 0 0 16px 0;
     font-weight: 600;
 }
@@ -535,13 +589,13 @@ body {
 
 .summary-label {
     color: #666;
-    font-size: 14px;
+    font-size: calc(var(--medium-text) * 0.875);
     margin-bottom: 8px;
 }
 
 .summary-value {
     color: #102147;
-    font-size: 20px;
+    font-size: calc(var(--medium-text) * 1.25);
     font-weight: 600;
 }
 
@@ -664,10 +718,9 @@ body {
 }
 
 .category-name {
+    font-size: calc(var(--medium-text) * 1.125);
     color: #102147;
     font-weight: 500;
-    font-size: 14px;
-    min-width: 100px;
 }
 
 .budget-progress {
@@ -953,18 +1006,18 @@ body {
 
 .screen-header h2 {
     color: #102147;
-    font-size: 24px;
+    font-size: calc(var(--large-text) * 1.1);
     margin: 0;
     flex: 1;
     text-align: center;
-    margin-right: 60px; /* Offset for the back button width to achieve true center */
+    margin-right: 60px;
 }
 
 .back-btn {
     background: none;
     border: none;
     color: #102147;
-    font-size: 16px;
+    font-size: var(--medium-text);
     font-weight: 600;
     cursor: pointer;
     padding: 8px 12px;
@@ -1027,7 +1080,7 @@ body {
 .form-group label {
     display: block;
     color: #102147;
-    font-size: 14px;
+    font-size: calc(var(--medium-text) * 0.875);
     margin-bottom: 8px;
     font-weight: 500;
 }
@@ -1037,7 +1090,7 @@ body {
     padding: 12px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: var(--medium-text);
     color: #333;
     background: white;
     transition: border-color 0.2s;
@@ -1055,7 +1108,7 @@ body {
     color: #000000;
     border: none;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: var(--medium-text);
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
@@ -1095,7 +1148,7 @@ body {
 }
 
 .category-name {
-    font-size: 16px;
+    font-size: calc(var(--medium-text) * 1.125);
     color: #102147;
     font-weight: 500;
 }
@@ -1224,4 +1277,179 @@ body {
 
 .bill-item.warning {
     background: #fff5f5;
+}
+
+/* High Contrast Mode */
+.high-contrast-mode {
+    background-color: #121212;
+    color: #FFFFFF;
+}
+
+.high-contrast-mode .app-content,
+.high-contrast-mode .manage-budget-grid,
+.high-contrast-mode .screen-header,
+.high-contrast-mode .empty-screen {
+    background-color: #121212;
+    color: #FFFFFF;
+}
+
+.high-contrast-mode h2,
+.high-contrast-mode h3,
+.high-contrast-mode .setting-title,
+.high-contrast-mode .balance-amount,
+.high-contrast-mode .activity-name,
+.high-contrast-mode .category-name {
+    color: #FFEB3B;
+}
+
+.high-contrast-mode .budget-action-card,
+.high-contrast-mode .category-budget-item,
+.high-contrast-mode .setting-item,
+.high-contrast-mode .form-input,
+.high-contrast-mode .toggle-label {
+    background-color: #212121;
+    border-color: #424242;
+    color: #FFFFFF;
+}
+
+.high-contrast-mode .nav-bar {
+    background-color: #212121;
+    border-color: #424242;
+}
+
+.high-contrast-mode .nav-icon,
+.high-contrast-mode .nav-label {
+    color: #FFFFFF;
+}
+
+.high-contrast-mode .nav-item.active .nav-icon,
+.high-contrast-mode .nav-item.active .nav-label {
+    color: #FFEB3B;
+}
+
+/* Settings Page Styles */
+.settings-grid {
+    padding: 20px;
+}
+
+.settings-section {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.settings-section h3 {
+    color: #102147;
+    font-size: 22px;
+    margin: 0 0 20px 0;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+.setting-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.setting-icon {
+    font-size: 24px;
+}
+
+.setting-title {
+    font-size: calc(var(--medium-text) * 1.125);
+    font-weight: 500;
+    color: #333;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+    position: relative;
+    width: 60px;
+    height: 30px;
+}
+
+.toggle-input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-label {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.toggle-label:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+.toggle-input:checked + .toggle-label {
+    background-color: #44db7e;
+}
+
+.toggle-input:checked + .toggle-label:before {
+    transform: translateX(30px);
+}
+
+/* Radio Options */
+.text-size-options {
+    display: flex;
+    gap: 15px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.radio-option input[type="radio"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+}
+
+.radio-option input[type="radio"]:checked {
+    border-color: #44db7e;
+    background: #44db7e;
+    box-shadow: inset 0 0 0 4px white;
+}
+
+.radio-option label {
+    font-size: calc(var(--medium-text) * 0.875);
+    color: #333;
+    cursor: pointer;
 }

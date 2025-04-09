@@ -534,7 +534,51 @@
 
                 <!-- Settings Screen -->
                 <div id="settings-screen" class="empty-screen">
-                    Settings Screen
+                    <div class="manage-budget-container">
+                        <div class="screen-header">
+                            <h2>Settings</h2>
+                        </div>
+                        
+                        <div class="manage-budget-grid settings-grid">
+                            <div class="settings-section">
+                                <h3>Accessibility</h3>
+                                
+                                <!-- High Contrast Mode Toggle -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="setting-icon">🎨</span>
+                                        <span class="setting-title">High Contrast Mode</span>
+                                    </div>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="high-contrast-toggle" class="toggle-input">
+                                        <label for="high-contrast-toggle" class="toggle-label"></label>
+                                    </div>
+                                </div>
+                                
+                                <!-- Text Size Options -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="setting-icon">📏</span>
+                                        <span class="setting-title">Text Size</span>
+                                    </div>
+                                    <div class="text-size-options">
+                                        <div class="radio-option">
+                                            <input type="radio" id="text-size-small" name="text-size" value="small">
+                                            <label for="text-size-small">Small</label>
+                                        </div>
+                                        <div class="radio-option">
+                                            <input type="radio" id="text-size-medium" name="text-size" value="medium" checked>
+                                            <label for="text-size-medium">Medium</label>
+                                        </div>
+                                        <div class="radio-option">
+                                            <input type="radio" id="text-size-large" name="text-size" value="large">
+                                            <label for="text-size-large">Large</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Manage Budget Screen -->
