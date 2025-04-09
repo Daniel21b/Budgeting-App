@@ -1337,6 +1337,7 @@ p, span, div, label, input, select, button {
     border-radius: 16px;
     padding: 20px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 20px;
 }
 
 .settings-section h3 {
@@ -1351,8 +1352,9 @@ p, span, div, label, input, select, button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 0;
+    padding: 16px 0;
     border-bottom: 1px solid #e0e0e0;
+    position: relative;
 }
 
 .setting-item:last-child {
@@ -1362,17 +1364,39 @@ p, span, div, label, input, select, button {
 .setting-label {
     display: flex;
     align-items: center;
-    gap: 12px;
+    width: 50%;
 }
 
 .setting-icon {
-    font-size: 24px;
+    font-size: 22px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    flex-shrink: 0;
 }
 
 .setting-title {
     font-size: calc(var(--medium-text) * 1.125);
     font-weight: 500;
     color: #333;
+    margin-right: 10px;
+}
+
+.setting-description {
+    color: #666;
+    font-size: calc(var(--medium-text) * 0.85);
+    margin-top: 4px;
+    margin-left: 48px;
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: absolute;
+    bottom: 6px;
+    left: 0;
 }
 
 /* Toggle Switch */
@@ -1380,6 +1404,8 @@ p, span, div, label, input, select, button {
     position: relative;
     width: 60px;
     height: 30px;
+    margin-right: 15px;
+    flex-shrink: 0;
 }
 
 .toggle-input {
@@ -1424,6 +1450,7 @@ p, span, div, label, input, select, button {
 .text-size-options {
     display: flex;
     gap: 15px;
+    margin-right: 15px;
 }
 
 .radio-option {
