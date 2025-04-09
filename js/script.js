@@ -16,6 +16,9 @@ function navigate(screen) {
     document.getElementById('add-expense-screen').style.display = 'none';
     document.getElementById('adjust-budget-screen').style.display = 'none';
     document.getElementById('set-goals-screen').style.display = 'none';
+    document.getElementById('add-transaction-screen').style.display = 'none';
+    document.getElementById('recurring-transaction-screen').style.display = 'none';
+    document.getElementById('bills-screen').style.display = 'none';
     
     // Show selected screen
     document.getElementById(screen + '-screen').style.display = 'flex';
@@ -196,3 +199,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+function markBillPaid(billName) {
+    alert(`✅ ${billName} bill marked as paid!`);
+}
