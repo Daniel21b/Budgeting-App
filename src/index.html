@@ -23,44 +23,52 @@
             <div class="app-content">
                 <!-- Home Screen -->
                 <div id="home-screen" class="empty-screen">
-                    <div class="budget-summary">
-                        <h2>Budget Overview</h2>
-                        <div class="balance-card">
-                            <div class="balance-amount">$1,200</div>
-                            <div class="balance-label">remaining this month</div>
-                            <div class="progress-container">
-                                <div class="progress-bar" style="width: 65%"></div>
-                            </div>
-                            <div class="progress-label">You've spent 65% of your budget</div>
-                        </div>
-                    </div>
-
-                    <div class="recent-activity">
-                        <h3>Recent Activity</h3>
-                        <div class="activity-list">
-                            <div class="activity-item">
-                                <div class="activity-amount">$15</div>
-                                <div class="activity-details">
-                                    <div class="activity-name">Starbucks</div>
-                                    <div class="activity-category">Food</div>
+                    <div class="home-grid-container">
+                        <div class="budget-summary">
+                            <h2>Budget Overview</h2>
+                            <div class="balance-card">
+                                <div class="balance-amount">$1,200</div>
+                                <div class="balance-label">remaining this month</div>
+                                <div class="progress-container">
+                                    <div class="progress-bar" style="width: 65%"></div>
                                 </div>
-                                <div class="activity-time">2h ago</div>
-                            </div>
-                            <div class="activity-item">
-                                <div class="activity-amount">$30</div>
-                                <div class="activity-details">
-                                    <div class="activity-name">Uber</div>
-                                    <div class="activity-category">Transport</div>
-                                </div>
-                                <div class="activity-time">5h ago</div>
+                                <div class="progress-label">You've spent 65% of your budget</div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="quick-actions">
-                        <button class="action-btn primary"><span>➕</span>Add Expense</button>
-                        <button class="action-btn"><span>📊</span>Adjust Budget</button>
-                        <button class="action-btn"><span>🎯</span>Set Goal</button>
+                        <div class="recent-activity">
+                            <h3>Recent Activity</h3>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-amount">$15</div>
+                                    <div class="activity-details">
+                                        <div class="activity-name">Starbucks</div>
+                                        <div class="activity-category">Food</div>
+                                    </div>
+                                    <div class="activity-time">2h ago</div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-amount">$30</div>
+                                    <div class="activity-details">
+                                        <div class="activity-name">Uber</div>
+                                        <div class="activity-category">Transport</div>
+                                    </div>
+                                    <div class="activity-time">5h ago</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="quick-actions">
+                            <button class="action-btn primary manage-btn" onclick="navigate('manage-budget')"><span>💰</span>Manage Budget</button>
+                        </div>
+                        
+                        <div class="quick-insight">
+                            <div class="insight-icon">💡</div>
+                            <div class="insight-content">
+                                <div class="insight-title">Quick Tip</div>
+                                <div class="insight-text">You're spending less on groceries compared to last month. Great job!</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -367,6 +375,176 @@
                 <!-- Settings Screen -->
                 <div id="settings-screen" class="empty-screen">
                     Settings Screen
+                </div>
+
+                <!-- Manage Budget Screen -->
+                <div id="manage-budget-screen" class="empty-screen">
+                    <div class="manage-budget-container">
+                        <div class="screen-header">
+                            <button class="back-btn" onclick="navigate('home')">← Back</button>
+                            <h2>Manage Budget</h2>
+                        </div>
+                        
+                        <div class="manage-budget-grid">
+                            <div class="budget-actions">
+                                <div class="budget-action-card" onclick="navigate('add-expense')">
+                                    <span class="action-icon">➕</span>
+                                    <h3>Add Expense</h3>
+                                    <p>Record a new expense or income</p>
+                                </div>
+                                
+                                <div class="budget-action-card" onclick="navigate('adjust-budget')">
+                                    <span class="action-icon">📊</span>
+                                    <h3>Adjust Budget</h3>
+                                    <p>Modify your budget categories</p>
+                                </div>
+                                
+                                <div class="budget-action-card" onclick="navigate('set-goals')">
+                                    <span class="action-icon">🎯</span>
+                                    <h3>Set Goals</h3>
+                                    <p>Create and track financial goals</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Expense Screen -->
+                <div id="add-expense-screen" class="empty-screen">
+                    <div class="manage-budget-container">
+                        <div class="screen-header">
+                            <button class="back-btn" onclick="navigate('manage-budget')">← Back</button>
+                            <h2>Add Expense</h2>
+                        </div>
+                        
+                        <div class="manage-budget-grid">
+                            <form class="expense-form">
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    <select class="form-input" id="transaction-type">
+                                        <option value="expense">Expense</option>
+                                        <option value="income">Income</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Amount</label>
+                                    <input type="number" class="form-input" placeholder="Enter amount" id="amount" step="0.01" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Category</label>
+                                    <select class="form-input" id="category">
+                                        <option value="food">Food & Dining</option>
+                                        <option value="transport">Transportation</option>
+                                        <option value="utilities">Utilities</option>
+                                        <option value="entertainment">Entertainment</option>
+                                        <option value="shopping">Shopping</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Date</label>
+                                    <input type="date" class="form-input" id="date" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label>Note</label>
+                                    <input type="text" class="form-input" placeholder="Add a note" id="note">
+                                </div>
+                                
+                                <button type="submit" class="submit-btn">Save Transaction</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adjust Budget Screen -->
+                <div id="adjust-budget-screen" class="empty-screen">
+                    <div class="manage-budget-container">
+                        <div class="screen-header">
+                            <button class="back-btn" onclick="navigate('manage-budget')">← Back</button>
+                            <h2>Adjust Budget</h2>
+                        </div>
+                        
+                        <div class="manage-budget-grid">
+                            <div class="budget-categories-list">
+                                <div class="category-budget-item">
+                                    <div class="category-info">
+                                        <span class="category-icon">🍽️</span>
+                                        <span class="category-name">Food & Dining</span>
+                                    </div>
+                                    <input type="number" class="budget-input" value="400" step="10">
+                                </div>
+                                
+                                <div class="category-budget-item">
+                                    <div class="category-info">
+                                        <span class="category-icon">🚗</span>
+                                        <span class="category-name">Transportation</span>
+                                    </div>
+                                    <input type="number" class="budget-input" value="200" step="10">
+                                </div>
+                                
+                                <div class="category-budget-item">
+                                    <div class="category-info">
+                                        <span class="category-icon">💡</span>
+                                        <span class="category-name">Utilities</span>
+                                    </div>
+                                    <input type="number" class="budget-input" value="300" step="10">
+                                </div>
+                                
+                                <div class="category-budget-item">
+                                    <div class="category-info">
+                                        <span class="category-icon">🎮</span>
+                                        <span class="category-name">Entertainment</span>
+                                    </div>
+                                    <input type="number" class="budget-input" value="150" step="10">
+                                </div>
+                            </div>
+                            
+                            <button class="submit-btn">Save Budget Changes</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Set Goals Screen -->
+                <div id="set-goals-screen" class="empty-screen">
+                    <div class="manage-budget-container">
+                        <div class="screen-header">
+                            <button class="back-btn" onclick="navigate('manage-budget')">← Back</button>
+                            <h2>Set Goals</h2>
+                        </div>
+                        
+                        <div class="manage-budget-grid">
+                            <div class="goals-list">
+                                <div class="goal-item">
+                                    <div class="goal-header">
+                                        <span class="goal-icon">🏠</span>
+                                        <h3>House Down Payment</h3>
+                                    </div>
+                                    <div class="goal-progress">
+                                        <div class="progress-bar" style="width: 65%"></div>
+                                        <span class="progress-text">$13,000 / $20,000</span>
+                                    </div>
+                                    <button class="edit-goal-btn">Edit Goal</button>
+                                </div>
+                                
+                                <div class="goal-item">
+                                    <div class="goal-header">
+                                        <span class="goal-icon">✈️</span>
+                                        <h3>Vacation Fund</h3>
+                                    </div>
+                                    <div class="goal-progress">
+                                        <div class="progress-bar" style="width: 30%"></div>
+                                        <span class="progress-text">$900 / $3,000</span>
+                                    </div>
+                                    <button class="edit-goal-btn">Edit Goal</button>
+                                </div>
+                            </div>
+                            
+                            <button class="add-goal-btn">+ Add New Goal</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 

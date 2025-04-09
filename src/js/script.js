@@ -12,20 +12,26 @@ function navigate(screen) {
     document.getElementById('reports-screen').style.display = 'none';
     document.getElementById('goals-screen').style.display = 'none';
     document.getElementById('settings-screen').style.display = 'none';
+    document.getElementById('manage-budget-screen').style.display = 'none';
+    document.getElementById('add-expense-screen').style.display = 'none';
+    document.getElementById('adjust-budget-screen').style.display = 'none';
+    document.getElementById('set-goals-screen').style.display = 'none';
     
     // Show selected screen
     document.getElementById(screen + '-screen').style.display = 'flex';
     
-    // Update active nav item
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => item.classList.remove('active'));
-    
-    const activeNav = Array.from(navItems).find(item => 
-        item.querySelector('.nav-label').textContent.toLowerCase() === screen
-    );
-    
-    if (activeNav) {
-        activeNav.classList.add('active');
+    // Update active nav item only for main navigation items
+    if (['home', 'reports', 'goals', 'settings'].includes(screen)) {
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => item.classList.remove('active'));
+        
+        const activeNav = Array.from(navItems).find(item => 
+            item.querySelector('.nav-label').textContent.toLowerCase() === screen
+        );
+        
+        if (activeNav) {
+            activeNav.classList.add('active');
+        }
     }
 }
 
@@ -117,14 +123,67 @@ function handleNavDotClick(page) {
     document.getElementById('next-page').disabled = newIndex === pages.length - 1;
 }
 
-// Initialize app
+// Handle form submissions
 document.addEventListener('DOMContentLoaded', function() {
-    // Show home screen by default
-    navigate('reports');
+    // Initialize navigation
+    navigate('home');
     
     // Update time
     updateTime();
-    setInterval(updateTime, 60000); // Update every minute
+    setInterval(updateTime, 60000);
+    
+    // Add Expense Form Handler
+    const expenseForm = document.querySelector('.expense-form');
+    if (expenseForm) {
+        expenseForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = {
+                type: document.getElementById('transaction-type').value,
+                amount: document.getElementById('amount').value,
+                category: document.getElementById('category').value,
+                date: document.getElementById('date').value,
+                note: document.getElementById('note').value
+            };
+            console.log('New transaction:', formData);
+            // Here you would typically save the data
+            alert('Transaction saved successfully!');
+            navigate('manage-budget');
+        });
+    }
+    
+    // Budget Changes Handler
+    const saveBudgetBtn = document.querySelector('.budget-categories-list + .submit-btn');
+    if (saveBudgetBtn) {
+        saveBudgetBtn.addEventListener('click', function() {
+            const categories = document.querySelectorAll('.category-budget-item');
+            const budgetData = Array.from(categories).map(category => ({
+                name: category.querySelector('.category-name').textContent,
+                amount: category.querySelector('.budget-input').value
+            }));
+            console.log('Updated budgets:', budgetData);
+            alert('Budget changes saved successfully!');
+            navigate('manage-budget');
+        });
+    }
+    
+    // Add New Goal Handler
+    const addGoalBtn = document.querySelector('.add-goal-btn');
+    if (addGoalBtn) {
+        addGoalBtn.addEventListener('click', function() {
+            // Here you would typically show a form to add a new goal
+            alert('Add new goal functionality coming soon!');
+        });
+    }
+    
+    // Edit Goal Handlers
+    const editGoalBtns = document.querySelectorAll('.edit-goal-btn');
+    editGoalBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const goalName = this.closest('.goal-item').querySelector('h3').textContent;
+            // Here you would typically show an edit form
+            alert(`Edit ${goalName} coming soon!`);
+        });
+    });
     
     // Add event listeners for navigation buttons
     document.getElementById('prev-page').addEventListener('click', () => navigateReportPage('prev'));
