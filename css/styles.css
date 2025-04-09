@@ -25,13 +25,14 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding: 0;
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #fff;
     font-size: var(--medium-text);
+    overflow-y: auto;
 }
 
 h1 {
@@ -99,10 +100,45 @@ p, span, div, label, input, select, button {
 .phone-frame {
     width: 640px;
     height: 960px;
-    background-color: #fff;
+    background-color: #272323; /* Your dark background */
     border-radius: 50px 50px 40px 40px;
     position: relative;
     overflow: hidden;
+    margin: auto;
+    max-height: 90vh; /* Prevent frame from being taller than viewport */
+    
+    /* Add a small base scale for ALL screens to ensure consistency */
+    transform: scale(0.92);
+    transform-origin: top center;
+    
+    /* Add a subtle transition to make scaling changes smoother */
+    transition: transform 0.3s ease-out;
+}
+
+/* Graduated scaling approach with more breakpoints */
+@media screen and (max-height: 900px) {
+    .phone-frame {
+        transform: scale(0.85);
+    }
+}
+
+@media screen and (max-height: 800px) {
+    .phone-frame {
+        transform: scale(0.78);
+    }
+}
+
+@media screen and (max-height: 700px) {
+    .phone-frame {
+        transform: scale(0.70);
+    }
+}
+
+/* Add width-based scaling for narrow screens */
+@media screen and (max-width: 700px) {
+    .phone-frame {
+        transform: scale(0.85);
+    }
 }
 
 .screen {
@@ -133,6 +169,8 @@ p, span, div, label, input, select, button {
     display: flex;
     flex-direction: column;
     background-color: #fcfcfc;
+    overflow-y: auto;
+    transition: padding-bottom 0.3s ease;
 }
 
 .empty-screen {
@@ -475,7 +513,49 @@ p, span, div, label, input, select, button {
     display: none;
     flex-direction: column;
     gap: 10px;
-    height: calc(100% - 20px);
+    height: calc(100% - 20px);.phone-frame {
+        width: 640px;
+        height: 960px;
+        background-color: #272323; /* Your dark background */
+        border-radius: 50px 50px 40px 40px;
+        position: relative;
+        overflow: hidden;
+        margin: auto;
+        max-height: 90vh; /* Prevent frame from being taller than viewport */
+        
+        /* Add a small base scale for ALL screens to ensure consistency */
+        transform: scale(0.92);
+        transform-origin: top center;
+        
+        /* Add a subtle transition to make scaling changes smoother */
+        transition: transform 0.3s ease-out;
+    }
+    
+    /* Graduated scaling approach with more breakpoints */
+    @media screen and (max-height: 900px) {
+        .phone-frame {
+            transform: scale(0.85);
+        }
+    }
+    
+    @media screen and (max-height: 800px) {
+        .phone-frame {
+            transform: scale(0.78);
+        }
+    }
+    
+    @media screen and (max-height: 700px) {
+        .phone-frame {
+            transform: scale(0.70);
+        }
+    }
+    
+    /* Add width-based scaling for narrow screens */
+    @media screen and (max-width: 700px) {
+        .phone-frame {
+            transform: scale(0.85);
+        }
+    }
     padding: 0 20px;
 }
 
@@ -1479,4 +1559,637 @@ p, span, div, label, input, select, button {
     font-size: calc(var(--medium-text) * 0.875);
     color: #333;
     cursor: pointer;
+}
+
+/* Form Validation Styles */
+.required-indicator {
+    color: #ff4757;
+    margin-left: 4px;
+}
+
+.valid-input {
+    border-color: #44db7e !important;
+    background-color: #f0fff4 !important;
+}
+
+.invalid-input {
+    border-color: #ff4757 !important;
+    background-color: #fff5f5 !important;
+}
+
+.validation-error {
+    color: #ff4757;
+    font-size: 12px;
+    margin-top: 4px;
+    display: block;
+}
+
+.validation-success {
+    color: #44db7e;
+    font-size: 18px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-feedback {
+    background-color: #ff4757;
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Tooltip Styles */
+.tooltip-icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 18px;
+    height: 18px;
+    background: #e0e0e0;
+    border-radius: 50%;
+    font-size: 12px;
+    color: #666;
+    margin-left: 8px;
+    cursor: help;
+}
+
+.tooltip {
+    position: fixed;
+    background: #333;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    max-width: 250px;
+    z-index: 1000;
+    transform: translateX(-50%);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip:after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid #333;
+}
+
+/* Confirmation Dialog Styles */
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.confirmation-dialog {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    width: 90%;
+    max-width: 320px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.confirmation-dialog h3 {
+    color: #102147;
+    margin: 0 0 12px 0;
+    font-size: 20px;
+}
+
+.confirmation-dialog p {
+    color: #666;
+    margin: 0 0 20px 0;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.dialog-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.dialog-btn {
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+
+.dialog-cancel {
+    background: #f0f0f0;
+    color: #666;
+}
+
+.dialog-confirm {
+    background: #4b7bec;
+    color: white;
+}
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    transition: opacity 0.3s, transform 0.3s;
+    max-width: 320px;
+    text-align: center;
+}
+
+.notification.fade-out {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+}
+
+/* Undo Notification */
+.undo-notification {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 30px;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.undo-button {
+    background: #4b7bec;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Error Dialog */
+.error-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.error-content {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    width: 90%;
+    max-width: 320px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.error-content h3 {
+    color: #ff4757;
+    margin: 0 0 12px 0;
+    font-size: 20px;
+}
+
+.error-content p {
+    color: #666;
+    margin: 0 0 20px 0;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.error-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.error-btn {
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+
+.retry-btn {
+    background: #4b7bec;
+    color: white;
+}
+
+.dismiss-btn {
+    background: #f0f0f0;
+    color: #666;
+}
+
+/* Smart Tips */
+.smart-tip {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f0f7ff;
+    border: 1px solid #4b7bec;
+    color: #102147;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 990;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: 90%;
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.tip-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.tip-icon {
+    font-size: 20px;
+}
+
+.tip-message {
+    line-height: 1.4;
+}
+
+.tip-dismiss {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #102147;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.tip-fade-out {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+}
+
+/* Onboarding Tutorial */
+.onboarding-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.onboarding-modal {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    width: 90%;
+    max-width: 550px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.onboarding-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+}
+
+.onboarding-modal h2 {
+    text-align: center;
+    color: #102147;
+    margin: 0 0 20px 0;
+    font-size: 24px;
+}
+
+.onboarding-slides {
+    margin-bottom: 24px;
+    min-height: 250px;
+}
+
+.onboarding-slide {
+    display: none;
+    text-align: center;
+}
+
+.onboarding-slide.active {
+    display: block;
+}
+
+.onboarding-slide h3 {
+    color: #102147;
+    font-size: 20px;
+    margin: 0 0 12px 0;
+}
+
+.onboarding-slide p {
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 0 16px 0;
+}
+
+.onboarding-slide img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.onboarding-navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.onboarding-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.onboarding-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.onboarding-dot.active {
+    background: #4b7bec;
+    transform: scale(1.2);
+}
+
+.onboarding-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.onboarding-btn {
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+}
+
+#onboarding-prev {
+    background: #f0f0f0;
+    color: #666;
+}
+
+#onboarding-next,
+#onboarding-finish {
+    background: #4b7bec;
+    color: white;
+}
+
+#onboarding-prev:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Virtual Keyboard Styles */
+.keyboard-container {
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    right: 0;
+    background: #f5f7fa;
+    border-top: 1px solid #e0e0e0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px 5px;
+    z-index: 50;
+    display: none;
+    transition: transform 0.3s ease;
+    transform: translateY(100%);
+    width: 100%;
+    max-height: 35%;
+}
+
+.keyboard-container.visible {
+    display: block;
+    transform: translateY(0);
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 6px;
+    width: 100%;
+}
+
+.keyboard-row:last-child {
+    margin-bottom: 0;
+}
+
+.keyboard-key {
+    flex: 1;
+    height: 36px;
+    margin: 0 2px;
+    border-radius: 6px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    font-size: calc(var(--medium-text) * 0.9);
+    font-weight: 500;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.keyboard-key:active, 
+.keyboard-key.pressed {
+    background: #e0e0e0;
+    transform: translateY(2px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.keyboard-key.special {
+    flex: 1.5;
+    font-size: calc(var(--medium-text) * 0.8);
+    background: #f0f0f0;
+}
+
+.keyboard-key.space {
+    flex: 4;
+}
+
+.keyboard-key.enter {
+    background: #44db7e;
+    color: #000000;
+    font-weight: 600;
+}
+
+.keyboard-key.delete {
+    background: #f0f0f0;
+}
+
+.keyboard-key.clear {
+    background: #ff4757;
+    color: white;
+}
+
+.keyboard-key.shift {
+    flex: 1.5;
+    background: #f0f0f0;
+}
+
+.keyboard-key.symbols,
+.keyboard-key.letters {
+    flex: 2;
+    background: #f0f0f0;
+    font-size: calc(var(--medium-text) * 0.8);
+}
+
+/* Numeric Keypad */
+.numeric-keypad .keyboard-row {
+    justify-content: center;
+}
+
+.numeric-keypad .keyboard-key {
+    flex: 1;
+    max-width: 60px;
+    height: 42px;
+    font-size: calc(var(--medium-text) * 1.1);
+    font-weight: 600;
+}
+
+.numeric-keypad .keyboard-key.delete,
+.numeric-keypad .keyboard-key.clear {
+    max-width: 60px;
+}
+
+.numeric-keypad .keyboard-key.zero {
+    flex: 2;
+    max-width: 124px;
+}
+
+.numeric-keypad .keyboard-key.decimal {
+    font-weight: 800;
+}
+
+/* High Contrast Mode Overrides */
+.high-contrast-mode .keyboard-container {
+    background: #212121;
+    border-top-color: #424242;
+}
+
+.high-contrast-mode .keyboard-key {
+    background: #333333;
+    border-color: #424242;
+    color: #FFFFFF;
+}
+
+.high-contrast-mode .keyboard-key.special,
+.high-contrast-mode .keyboard-key.shift,
+.high-contrast-mode .keyboard-key.symbols,
+.high-contrast-mode .keyboard-key.letters {
+    background: #424242;
+}
+
+.high-contrast-mode .keyboard-key.enter {
+    background: #44db7e;
+    color: #000000;
+}
+
+.high-contrast-mode .keyboard-key.delete {
+    background: #424242;
+    color: #FFFFFF;
+}
+
+.high-contrast-mode .keyboard-key.clear {
+    background: #ff4757;
+}
+
+.high-contrast-mode .keyboard-key:active,
+.high-contrast-mode .keyboard-key.pressed {
+    background: #555555;
+}
+
+/* Spacer for keyboard visibility */
+.keyboard-spacer {
+    height: 0;
+    transition: height 0.3s ease;
+    margin-top: auto;
+}
+
+.keyboard-spacer.visible {
+    height: 200px; /* Adjusted height for the keyboard */
+}
+
+/* Add responsive scaling ONLY for smaller screens */
+@media screen and (max-height: 800px) {
+    .phone-frame {
+        transform: scale(0.85); /* Scale down on smaller screens */
+        transform-origin: top center; /* Scale from top */
+    }
+}
+
+@media screen and (max-height: 700px) {
+    .phone-frame {
+        transform: scale(0.75); /* Scale down even more on very small screens */
+    }
 }

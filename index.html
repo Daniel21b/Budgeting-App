@@ -797,6 +797,9 @@
                 </div>
             </div>
 
+            <!-- Keyboard spacer - prevents content from being hidden behind keyboard -->
+            <div class="keyboard-spacer"></div>
+
             <!-- Navigation Bar -->
             <div class="nav-bar">
                 <div class="nav-item active" onclick="navigate('home')">
@@ -814,6 +817,91 @@
                 <div class="nav-item" onclick="navigate('settings')">
                     <div class="nav-icon">⚙️</div>
                     <div class="nav-label">Settings</div>
+                </div>
+            </div>
+            
+            <!-- Alphanumeric Keyboard -->
+            <div id="alpha-keyboard" class="keyboard-container">
+                <div class="keyboard-row">
+                    <div class="keyboard-key" data-key="1">1</div>
+                    <div class="keyboard-key" data-key="2">2</div>
+                    <div class="keyboard-key" data-key="3">3</div>
+                    <div class="keyboard-key" data-key="4">4</div>
+                    <div class="keyboard-key" data-key="5">5</div>
+                    <div class="keyboard-key" data-key="6">6</div>
+                    <div class="keyboard-key" data-key="7">7</div>
+                    <div class="keyboard-key" data-key="8">8</div>
+                    <div class="keyboard-key" data-key="9">9</div>
+                    <div class="keyboard-key" data-key="0">0</div>
+                </div>
+                <div class="keyboard-row">
+                    <div class="keyboard-key" data-key="q">q</div>
+                    <div class="keyboard-key" data-key="w">w</div>
+                    <div class="keyboard-key" data-key="e">e</div>
+                    <div class="keyboard-key" data-key="r">r</div>
+                    <div class="keyboard-key" data-key="t">t</div>
+                    <div class="keyboard-key" data-key="y">y</div>
+                    <div class="keyboard-key" data-key="u">u</div>
+                    <div class="keyboard-key" data-key="i">i</div>
+                    <div class="keyboard-key" data-key="o">o</div>
+                    <div class="keyboard-key" data-key="p">p</div>
+                </div>
+                <div class="keyboard-row">
+                    <div class="keyboard-key" data-key="a">a</div>
+                    <div class="keyboard-key" data-key="s">s</div>
+                    <div class="keyboard-key" data-key="d">d</div>
+                    <div class="keyboard-key" data-key="f">f</div>
+                    <div class="keyboard-key" data-key="g">g</div>
+                    <div class="keyboard-key" data-key="h">h</div>
+                    <div class="keyboard-key" data-key="j">j</div>
+                    <div class="keyboard-key" data-key="k">k</div>
+                    <div class="keyboard-key" data-key="l">l</div>
+                </div>
+                <div class="keyboard-row">
+                    <div class="keyboard-key shift special" data-key="shift">⇧</div>
+                    <div class="keyboard-key" data-key="z">z</div>
+                    <div class="keyboard-key" data-key="x">x</div>
+                    <div class="keyboard-key" data-key="c">c</div>
+                    <div class="keyboard-key" data-key="v">v</div>
+                    <div class="keyboard-key" data-key="b">b</div>
+                    <div class="keyboard-key" data-key="n">n</div>
+                    <div class="keyboard-key" data-key="m">m</div>
+                    <div class="keyboard-key delete special" data-key="delete">⌫</div>
+                </div>
+                <div class="keyboard-row">
+                    <div class="keyboard-key symbols special" data-key="symbols">123</div>
+                    <div class="keyboard-key" data-key="@">@</div>
+                    <div class="keyboard-key space" data-key=" ">Space</div>
+                    <div class="keyboard-key" data-key=".">.</div>
+                    <div class="keyboard-key enter special" data-key="enter">Enter</div>
+                </div>
+            </div>
+
+            <!-- Numeric Keypad -->
+            <div id="numeric-keyboard" class="keyboard-container numeric-keypad">
+                <div class="keyboard-row">
+                    <div class="keyboard-key" data-key="1">1</div>
+                    <div class="keyboard-key" data-key="2">2</div>
+                    <div class="keyboard-key" data-key="3">3</div>
+                </div>
+                <div class="keyboard-row">
+                    <div class="keyboard-key" data-key="4">4</div>
+                    <div class="keyboard-key" data-key="5">5</div>
+                    <div class="keyboard-key" data-key="6">6</div>
+                </div>
+                <div class="keyboard-row">
+                    <div class="keyboard-key" data-key="7">7</div>
+                    <div class="keyboard-key" data-key="8">8</div>
+                    <div class="keyboard-key" data-key="9">9</div>
+                </div>
+                <div class="keyboard-row">
+                    <div class="keyboard-key clear" data-key="clear">Clear</div>
+                    <div class="keyboard-key zero" data-key="0">0</div>
+                    <div class="keyboard-key decimal" data-key=".">.</div>
+                </div>
+                <div class="keyboard-row">
+                    <div class="keyboard-key delete" data-key="delete">⌫</div>
+                    <div class="keyboard-key enter" data-key="enter">Enter</div>
                 </div>
             </div>
         </div>
