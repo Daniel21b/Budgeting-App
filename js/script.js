@@ -40,7 +40,6 @@ function navigate(screen) {
 
 // Show empty de survey
 function showEmptyScreen(screen) {
-    document.getElementById('welcome-survey').style.display = 'none';
     document.getElementById(screen + '-screen').style.display = 'flex';
     
     // Update active nav item
@@ -690,122 +689,11 @@ function hideTooltip() {
     }
 }
 
+// Function to setup onboarding
 function setupUserOnboarding() {
-    // Check if first visit
-    if (!localStorage.getItem('onboardingCompleted')) {
-        showOnboardingOverlay();
-    }
-}
-
-function showOnboardingOverlay() {
-    const overlay = document.createElement('div');
-    overlay.className = 'onboarding-overlay';
-    
-    overlay.innerHTML = `
-        <div class="onboarding-modal">
-            <button class="onboarding-close">×</button>
-            <h2>Welcome to Your Budget App!</h2>
-            
-            <div class="onboarding-slides">
-                <div class="onboarding-slide active">
-                    <h3>Track Your Finances</h3>
-                    <p>Monitor your spending, income, and savings goals all in one place.</p>
-                    <img src="https://via.placeholder.com/300x150?text=Budget+Overview" alt="Budget Overview">
-                </div>
-                
-                <div class="onboarding-slide">
-                    <h3>Set Budgets</h3>
-                    <p>Create personalized budgets for different spending categories.</p>
-                    <img src="https://via.placeholder.com/300x150?text=Budget+Categories" alt="Budget Categories">
-                </div>
-                
-                <div class="onboarding-slide">
-                    <h3>Monitor Reports</h3>
-                    <p>View detailed reports to understand your financial health.</p>
-                    <img src="https://via.placeholder.com/300x150?text=Financial+Reports" alt="Financial Reports">
-                </div>
-            </div>
-            
-            <div class="onboarding-navigation">
-                <div class="onboarding-dots">
-                    <span class="onboarding-dot active"></span>
-                    <span class="onboarding-dot"></span>
-                    <span class="onboarding-dot"></span>
-                </div>
-                
-                <div class="onboarding-buttons">
-                    <button class="onboarding-btn" id="onboarding-prev" disabled>Previous</button>
-                    <button class="onboarding-btn" id="onboarding-next">Next</button>
-                    <button class="onboarding-btn" id="onboarding-finish" style="display: none;">Get Started</button>
-                </div>
-            </div>
-        </div>
-    `;
-    
-    document.body.appendChild(overlay);
-    
-    // Setup navigation
-    let currentSlide = 0;
-    const slides = overlay.querySelectorAll('.onboarding-slide');
-    const dots = overlay.querySelectorAll('.onboarding-dot');
-    const prevBtn = overlay.querySelector('#onboarding-prev');
-    const nextBtn = overlay.querySelector('#onboarding-next');
-    const finishBtn = overlay.querySelector('#onboarding-finish');
-    
-    // Next button
-    nextBtn.addEventListener('click', () => {
-        if (currentSlide < slides.length - 1) {
-            goToSlide(currentSlide + 1);
-        }
-    });
-    
-    // Previous button
-    prevBtn.addEventListener('click', () => {
-        if (currentSlide > 0) {
-            goToSlide(currentSlide - 1);
-        }
-    });
-    
-    // Finish button
-    finishBtn.addEventListener('click', () => {
-        localStorage.setItem('onboardingCompleted', 'true');
-        document.body.removeChild(overlay);
-    });
-    
-    // Close button
-    overlay.querySelector('.onboarding-close').addEventListener('click', () => {
-        localStorage.setItem('onboardingCompleted', 'true');
-        document.body.removeChild(overlay);
-    });
-    
-    // Handle slide navigation
-    function goToSlide(index) {
-        slides[currentSlide].classList.remove('active');
-        dots[currentSlide].classList.remove('active');
-        
-        currentSlide = index;
-        
-        slides[currentSlide].classList.add('active');
-        dots[currentSlide].classList.add('active');
-        
-        // Update buttons
-        prevBtn.disabled = currentSlide === 0;
-        
-        if (currentSlide === slides.length - 1) {
-            nextBtn.style.display = 'none';
-            finishBtn.style.display = 'block';
-        } else {
-            nextBtn.style.display = 'block';
-            finishBtn.style.display = 'none';
-        }
-    }
-    
-    // Make dots clickable
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            goToSlide(index);
-        });
-    });
+    // Set the onboarding as completed immediately to prevent showing the welcome screen
+    localStorage.setItem('onboardingCompleted', 'true');
+    // No longer showing the onboarding overlay on first visit
 }
 
 function setupSmartTips() {

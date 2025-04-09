@@ -621,6 +621,54 @@
                                     <div class="setting-description">Notify me about upcoming bills and payments</div>
                                 </div>
                             </div>
+
+                            <!-- Currency Preferences Section -->
+                            <div class="settings-section">
+                                <h3>Currency Preferences</h3>
+                                
+                                <!-- Display Currency Selector -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="setting-icon">💱</span>
+                                        <span class="setting-title">Display Currency</span>
+                                    </div>
+                                    <select class="form-input" id="currency-selector">
+                                        <option value="usd" selected>USD (US Dollar)</option>
+                                        <option value="eur">EUR (Euro)</option>
+                                    </select>
+                                    <div class="setting-description">Choose your preferred currency for display</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Data Management Section -->
+                            <div class="settings-section">
+                                <h3>Data Management</h3>
+                                
+                                <!-- Export Data Button -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="setting-icon">💾</span>
+                                        <span class="setting-title">Export Data</span>
+                                    </div>
+                                    <button class="submit-btn">Export</button>
+                                    <div class="setting-description">Download your financial data as a CSV file</div>
+                                </div>
+                                
+                                <!-- Backup Frequency Selector -->
+                                <div class="setting-item">
+                                    <div class="setting-label">
+                                        <span class="setting-icon">🔄</span>
+                                        <span class="setting-title">Backup Frequency</span>
+                                    </div>
+                                    <select class="form-input" id="backup-frequency">
+                                        <option value="weekly" selected>Weekly</option>
+                                        <option value="monthly">Monthly</option>
+                                        <option value="quarterly">Quarterly</option>
+                                        <option value="never">Never</option>
+                                    </select>
+                                    <div class="setting-description">Set how often your data should be automatically backed up</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

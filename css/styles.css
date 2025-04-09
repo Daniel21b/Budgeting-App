@@ -184,6 +184,16 @@ p, span, div, label, input, select, button {
     padding: 20px;
 }
 
+/* Add specific styling for settings screen to fix scrolling */
+#settings-screen {
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow-y: visible;
+    height: auto;
+    min-height: min-content;
+    display: none;
+}
+
 .nav-bar {
     height: 70px;
     background-color: white;
@@ -513,49 +523,7 @@ p, span, div, label, input, select, button {
     display: none;
     flex-direction: column;
     gap: 10px;
-    height: calc(100% - 20px);.phone-frame {
-        width: 640px;
-        height: 960px;
-        background-color: #272323; /* Your dark background */
-        border-radius: 50px 50px 40px 40px;
-        position: relative;
-        overflow: hidden;
-        margin: auto;
-        max-height: 90vh; /* Prevent frame from being taller than viewport */
-        
-        /* Add a small base scale for ALL screens to ensure consistency */
-        transform: scale(0.92);
-        transform-origin: top center;
-        
-        /* Add a subtle transition to make scaling changes smoother */
-        transition: transform 0.3s ease-out;
-    }
-    
-    /* Graduated scaling approach with more breakpoints */
-    @media screen and (max-height: 900px) {
-        .phone-frame {
-            transform: scale(0.85);
-        }
-    }
-    
-    @media screen and (max-height: 800px) {
-        .phone-frame {
-            transform: scale(0.78);
-        }
-    }
-    
-    @media screen and (max-height: 700px) {
-        .phone-frame {
-            transform: scale(0.70);
-        }
-    }
-    
-    /* Add width-based scaling for narrow screens */
-    @media screen and (max-width: 700px) {
-        .phone-frame {
-            transform: scale(0.85);
-        }
-    }
+    height: calc(100% - 20px);
     padding: 0 20px;
 }
 
@@ -1060,6 +1028,12 @@ p, span, div, label, input, select, button {
     padding: 20px;
 }
 
+/* Modified container specifically for settings screen */
+#settings-screen .manage-budget-container {
+    height: auto;
+    overflow-y: visible;
+}
+
 .manage-budget-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -1073,6 +1047,14 @@ p, span, div, label, input, select, button {
     min-height: 500px;
 }
 
+/* Specific settings for settings screen grid */
+#settings-screen .manage-budget-grid {
+    overflow-y: visible;
+    max-height: none;
+    margin-bottom: 50px;
+    margin-top: 80px; /* Add space for the header */
+}
+
 .screen-header {
     display: flex;
     align-items: center;
@@ -1082,6 +1064,8 @@ p, span, div, label, input, select, button {
     top: 70px;
     left: 20px;
     width: calc(100% - 40px);
+    z-index: 10; /* Ensure header stays on top */
+    background-color: #fcfcfc; /* Match app-content background */
 }
 
 .screen-header h2 {
@@ -1410,6 +1394,8 @@ p, span, div, label, input, select, button {
 /* Settings Page Styles */
 .settings-grid {
     padding: 20px;
+    height: auto;
+    overflow-y: visible;
 }
 
 .settings-section {
